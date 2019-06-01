@@ -1,5 +1,7 @@
 import React from 'react'
 
-const Pages: React.FC = () => (
-  <div>My first TypeScript App!</div>
+const Main: React.FC = () => (
+  <div>My first TypeScript App! #Main</div>
 )
+
+export default Main
