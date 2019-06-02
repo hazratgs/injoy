@@ -1,7 +1,29 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import CourseFilter from '../../components/CourseFilter'
+import { Container, CourseWrapper } from './styles'
+import { ICourseType } from '../../types/courses'
+import { AppState } from '../../types/state'
 
-const Main: React.FC = () => (
-  <div>My first TypeScript App! #Main</div>
+const enhance = connect(
+  (state: AppState) => ({
+    types: state.courses.types,
+    selectedTypes: state.courses.selectedTypes
+  })
 )
 
-export default Main
+interface IProps {
+  types: ICourseType[],
+  selectedTypes: number[]
+}
+
+const Main = (props: IProps) => (
+  <Container>
+    <CourseWrapper>
+      Курсы
+    </CourseWrapper>
+    <CourseFilter items={props.types} selectedTypes={props.selectedTypes} />
+  </Container>
+)
+
+export default enhance(Main)
