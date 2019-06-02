@@ -5,7 +5,10 @@ export interface INewsState {
 }
 
 export interface INewsItem {
-  name: string
+  title: string,
+  image: string,
+  category: string,
+  description: string
 }
 
 export interface INewsType {
