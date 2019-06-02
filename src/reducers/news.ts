@@ -1,8 +1,8 @@
 import { createReducer } from 'redux-act'
-import * as actions from '../actions/courses'
-import { ICoursesState } from '../types/courses'
+import * as actions from '../actions/news'
+import { INewsState } from '../types/news'
 
-const initialState: ICoursesState = {
+const initialState: INewsState = {
   items: [],
   types: [
     {
@@ -43,7 +43,7 @@ const initialState: ICoursesState = {
 
 const reducer = createReducer<typeof initialState>({}, initialState)
 
-reducer.on(actions.successfulLoadCourses, (state, payload) => ({
+reducer.on(actions.successfulLoadNews, (state, payload) => ({
   ...state,
   items: payload
 }))

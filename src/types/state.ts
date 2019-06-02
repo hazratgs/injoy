@@ -1,6 +1,6 @@
-import { ICoursesState } from '../types/courses'
+import { INewsState } from '../types/news'
 
 export interface AppState {
   router: any
-  courses: ICoursesState
+  news: INewsState
 }

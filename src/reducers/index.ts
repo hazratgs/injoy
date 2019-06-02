@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
 import { connectRouter } from 'connected-react-router'
-import courses from './courses'
+import news from './news'
 import { AppState } from '../types/state'
 
 export default (history: any) => combineReducers<AppState>({
   router: connectRouter(history),
-  courses
+  news
 })

@@ -1,26 +1,27 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import CourseFilter from '../../components/CourseFilter'
+import News from '../../containers/News'
 import { Container, CourseWrapper } from './styles'
-import { ICourseType } from '../../types/courses'
+import { INewsType } from '../../types/news'
 import { AppState } from '../../types/state'
 
 const enhance = connect(
   (state: AppState) => ({
-    types: state.courses.types,
-    selectedTypes: state.courses.selectedTypes
+    types: state.news.types,
+    selectedTypes: state.news.selectedTypes
   })
 )
 
 interface IProps {
-  types: ICourseType[],
+  types: INewsType[],
   selectedTypes: number[]
 }
 
 const Main = (props: IProps) => (
   <Container>
     <CourseWrapper>
-      Курсы
+      <News />
     </CourseWrapper>
     <CourseFilter items={props.types} selectedTypes={props.selectedTypes} />
   </Container>

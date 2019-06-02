@@ -1,8 +1,8 @@
 import { all, fork } from 'redux-saga/effects'
-import courses from './courses'
+import news from './news'
 
 export default function* rootSaga() {
   return yield all([
-    courses
+    news
   ].map(fork))
 }
