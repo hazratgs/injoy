@@ -8,6 +8,7 @@ export const Container = styled.div`
   background-color: #fff;
   width: 300px;
   border-radius: 8px;
+  padding-bottom: 30px;
 `
 
 export const Title = styled.h2`

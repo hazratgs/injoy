@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import CourseFilter from '../../components/CourseFilter'
 import News from '../../containers/News'
-import { Container, CourseWrapper } from './styles'
+import { Container, CourseWrapper, Aside } from './styles'
 import { INewsType } from '../../types/news'
 import { AppState } from '../../types/state'
 
@@ -23,7 +23,9 @@ const Main = (props: IProps) => (
     <CourseWrapper>
       <News />
     </CourseWrapper>
-    <CourseFilter items={props.types} selectedTypes={props.selectedTypes} />
+    <Aside>
+      <CourseFilter items={props.types} selectedTypes={props.selectedTypes} />
+    </Aside>
   </Container>
 )
 
