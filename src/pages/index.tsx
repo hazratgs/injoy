@@ -1,13 +1,14 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import NavigationBar from '../containers/NavigationBar'
 import Header from '../containers/Header'
 import { Wrapper, Content } from './styles'
 
 import Main from './main'
+import Register from './register'
 
-const Pages: React.FC = () => (
-  <Fragment>
+const Pages = () => (
+  <>
     <Header />
     <Wrapper>
       <NavigationBar />
@@ -17,8 +18,14 @@ const Pages: React.FC = () => (
         </Switch>
       </Content>
     </Wrapper>
-  </Fragment>
-
+  </>
 )
 
-export default Pages
+const Sections = () => (
+  <Switch>
+    <Route path='/register' component={Register} />
+    <Route path='/' component={Pages} />
+  </Switch>
+)
+
+export default Sections
