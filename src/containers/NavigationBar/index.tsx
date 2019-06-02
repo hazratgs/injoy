@@ -1,4 +1,5 @@
 import React from 'react'
+import Logo from '../../components/Logo'
 import NavigationItem from '../../components/NavitgationItem'
 import NavigationUser from '../../components/NavigationUser'
 import { Container, Wrapper } from './styles'
@@ -33,6 +34,7 @@ const NavigationBar: React.FC = () => {
 
   return (
     <Container>
+      <Logo />
       <Wrapper>
         {items}
       </Wrapper>

@@ -4,6 +4,7 @@ export const Container = styled.div`
   height: 80px;
   display: flex;
   background-color: #fff;
+  padding-left: 280px;
 `
 
 export const Wrapper = styled.div`
