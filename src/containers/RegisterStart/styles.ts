@@ -7,10 +7,25 @@ export const Container = styled.div`
   background-color: #fff;
   border-radius: 4px;
   box-shadow: 0 4px 40px 0 rgba(0, 0, 0, 0.05);
+
+  @media (max-width: 768px) {
+    width: 100%;
+    display: block;
+    background-color: transparent;
+    box-shadow: none;
+    height: auto;
+    margin-top: -118px;
+  }
 `
 
 export const VideoWraper = styled.div`
   flex: 1;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 15px 15px 0;
+  }
 `
 
 export const VideoImages = styled.div`
@@ -24,6 +39,12 @@ export const VideoImages = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 217px;
+    border-radius: 8px 8px 0 0;
+  }
 `
 
 export const Player = styled.div`
@@ -57,6 +78,11 @@ export const VideoDescription = styled.div`
   justify-content: center;
   align-items: center;
   padding: 0 40px;
+
+  @media (max-width: 768px) {
+    padding: 20px 0 20px 30px;
+    height: auto;
+  }
 `
 
 export const VideoLogo = styled.img`
@@ -74,6 +100,10 @@ export const VideoDescriptionText = styled.p`
   strong {
     color: #fcd846;
   }
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 `
 
 export const Content = styled.div`
@@ -83,6 +113,12 @@ export const Content = styled.div`
   align-content: center;
   justify-content: center;
   text-align: center;
+
+  @media (max-width: 768px) {
+    background-color: #fff;
+    margin: 0 15px;
+    padding: 30px 0;
+  }
 `
 
 export const Title = styled.h3`

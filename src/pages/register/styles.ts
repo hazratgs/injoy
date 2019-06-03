@@ -8,11 +8,24 @@ export const Container = styled.div`
   &:after {
     width: 100vw;
     height: 50%;
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     background-color: #2992fa;
     content: '';
+
+    @media (max-width: 768px) {
+      height: 334px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 0;
+
+    &:after {
+      height: 334px;
+      position: absolute;
+    }
   }
 `
 
@@ -30,12 +43,21 @@ export const Logo = styled.img`
 
 export const Footer = styled.div`
   margin-top: 50px;
+
+  @media (max-width: 768px) {
+    background-color: #fff;
+    margin-top: 0;
+    padding: 30px 0;
+    width: calc(100% - 30px);
+    margin: 0 auto;
+  }
 `
 
 export const Copyright = styled.p`
   font-size: 10px;
   color: #000;
   opacity: .4;
+  text-align: center;  
 `
 
 export const SocialWrapper = styled.div`
