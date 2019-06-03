@@ -14,7 +14,7 @@ export const Container = styled.div`
     background-color: transparent;
     box-shadow: none;
     height: auto;
-    margin-top: -118px;
+    margin-top: -132px;
   }
 `
 

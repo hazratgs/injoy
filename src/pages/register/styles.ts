@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   background-color: #f7f7f7;
-  padding: 50px 0;
+  padding-bottom: 50px;
   min-height: 100vh;
 
   &:after {
@@ -39,6 +39,12 @@ export const Wrapper = styled.div`
 
 export const Logo = styled.img`
   margin-bottom: 60px;
+  margin-top: 50px;
+
+  @media (max-width: 768px) {
+    padding: 37px 0;
+    margin: 0;
+  }
 `
 
 export const Footer = styled.div`

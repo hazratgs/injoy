@@ -10,6 +10,15 @@ export const Container = styled.div`
   flex-direction: column;
   border-radius: 4px;
   box-shadow: 0 4px 40px 0 rgba(0, 0, 0, 0.05);
+
+  @media (max-width: 768px) {
+    width: calc(100% - 30px);
+    margin: 0 auto;
+    border-radius: 8px 8px 0 0;
+    justify-content: flex-start;
+    padding: 40px 0;
+    height: auto;
+  }
 `
 
 export const Title = styled.h3`
