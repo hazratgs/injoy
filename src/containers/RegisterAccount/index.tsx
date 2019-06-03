@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import Input from '../Input'
-import Buttom from '../Button'
+import Input from '../../components/Input'
+import Buttom from '../../components/Button'
 import { Container, Title } from './styles'
 
 interface IFields {

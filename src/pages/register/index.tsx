@@ -1,7 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
-import RegisterStart from '../../components/RegisterStart'
-import RegisterAccount from '../../components/RegisterAccount'
+import RegisterStart from '../../containers/RegisterStart'
+import RegisterAccount from '../../containers/RegisterAccount'
 import {
   Container,
   Logo,
