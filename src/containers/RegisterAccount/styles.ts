@@ -19,6 +19,7 @@ export const Container = styled.div`
     justify-content: flex-start;
     padding: 40px 0;
     height: auto;
+    position: static;
   }
 `
 
