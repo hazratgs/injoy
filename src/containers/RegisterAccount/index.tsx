@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Input from '../../components/Input'
 import Buttom from '../../components/Button'
-import { Container, Title } from './styles'
+import { Container, Title, Error } from './styles'
 
 interface IFields {
   firstName: string,
@@ -18,6 +18,7 @@ const RegisterAccount = () => {
 
   const [errors, setErrors] = useState<string[]>([])
   const [checked, setCheck] = useState<string[]>([])
+  const [loginUsed, setLoginUsed] = useState<boolean>(false)
 
   const handle = (name: string) => (value: string): void => {
     if (errors.includes(name) && value !== '' && value.length > 2) {
@@ -29,6 +30,7 @@ const RegisterAccount = () => {
     if (name === 'login') {
       const loginCheck = value !== '' && value.length > 2 ? ['login'] : []
       setCheck(loginCheck)
+      setLoginUsed(false)
     }
   }
 
@@ -38,7 +40,17 @@ const RegisterAccount = () => {
 
     if (firstName === '' || firstName.length < 2) errors.push('firstName')
     if (lastName === '' || lastName.length < 2) errors.push('lastName')
-    if (login === '' || login.length < 2) errors.push('login')
+    if (login === '' || login.length < 2) {
+      errors.push('login')
+    }
+
+    if (login === 'hazratgs') {
+      setLoginUsed(true)
+      setCheck(checked.filter(item => item !== 'login'))
+      errors.push('login')
+    } else {
+      setLoginUsed(false)
+    }
 
     if (errors.length) {
       setErrors(errors)
@@ -49,6 +61,9 @@ const RegisterAccount = () => {
 
   return (
     <Container>
+      {loginUsed && (
+        <Error>Этот nickname уже занят другим пользователем</Error>
+      )}
       <Title>Введите данные</Title>
       <Input
         placeholder={'Имя'}
