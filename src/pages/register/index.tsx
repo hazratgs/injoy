@@ -1,6 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import RegisterStart from '../../components/RegisterStart'
+import RegisterAccount from '../../components/RegisterAccount'
 import {
   Container,
   Logo,
@@ -16,7 +17,8 @@ const Register = () => (
     <Wrapper>
       <Logo src='/logo.svg' alt='injoy' />
       <Switch>
-        <Route path='/register' component={RegisterStart} />
+        <Route path='/register' component={RegisterStart} exact />
+        <Route path='/register/account' component={RegisterAccount} exact />
       </Switch>
       <Footer>
         <Copyright>© 2019 injoy.org Все права защищены.</Copyright>
