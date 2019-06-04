@@ -2,6 +2,7 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import RegisterStart from '../../containers/RegisterStart'
 import RegisterAccount from '../../containers/RegisterAccount'
+import RegisterPhone from '../../containers/RegisterPhone'
 import {
   Container,
   Logo,
@@ -15,25 +16,26 @@ import {
 const Register = () => (
   <Container>
     <Wrapper>
-      <Logo src='/logo.svg' alt='injoy' />
+      <Logo src='/images/logo.svg' alt='injoy' />
       <Switch>
         <Route path='/register' component={RegisterStart} exact />
         <Route path='/register/account' component={RegisterAccount} exact />
+        <Route path='/register/phone' component={RegisterPhone} exact />
       </Switch>
       <Footer>
         <Copyright>© 2019 injoy.org Все права защищены.</Copyright>
         <SocialWrapper>
           <SocialItem target='_blank' href='#'>
-            <img src='/facebook.svg' alt='facebook' />
+            <img src='/images/facebook.svg' alt='facebook' />
           </SocialItem>
           <SocialItem target='_blank' href='#'>
-            <img src='/twitter.svg' alt='twitter' />
+            <img src='/images/twitter.svg' alt='twitter' />
           </SocialItem>
           <SocialItem target='_blank' href='#'>
-            <img src='/youtube.svg' alt='youtube' />
+            <img src='/images/youtube.svg' alt='youtube' />
           </SocialItem>
           <SocialItem target='_blank' href='#'>
-            <img src='/telegram.svg' alt='telegram' />
+            <img src='/images/telegram.svg' alt='telegram' />
           </SocialItem>
         </SocialWrapper>
       </Footer>

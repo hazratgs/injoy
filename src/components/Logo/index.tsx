@@ -3,7 +3,7 @@ import { LogoContainer } from './styles'
 
 const Logo: React.FC = () => (
   <LogoContainer>
-    <img src='/logo.svg' alt='Injoy'/>
+    <img src='/images/logo.svg' alt='Injoy'/>
   </LogoContainer>
 )
 

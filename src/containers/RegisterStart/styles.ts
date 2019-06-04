@@ -31,7 +31,7 @@ export const VideoWraper = styled.div`
 export const VideoImages = styled.div`
   width: 458px;
   height: 368px;
-  background-image: url('/register/bg-start.png');
+  background-image: url('/images/register/bg-start.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

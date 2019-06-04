@@ -22,7 +22,7 @@ const CourseFilter = (props: IProps) => {
         <Name>{item.name}</Name>
         {active && (
           <RemoveButton>
-            <img src='/remove.svg' alt='remove' />
+            <img src='/images/remove.svg' alt='remove' />
           </RemoveButton>
         )}
       </Item>

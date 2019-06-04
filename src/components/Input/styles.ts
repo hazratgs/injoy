@@ -97,7 +97,7 @@ export const Checked = styled.div`
   top: 0;
   bottom: 0;
   margin: auto;
-  background-image: url('/register/checked-input.svg');
+  background-image: url('/images/register/checked-input.svg');
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;

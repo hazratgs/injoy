@@ -9,9 +9,9 @@ const Header: React.FC = () => (
       <Content>
         <HeaderSearch />
         <Buttons>
-          <HeaderButton icon='/doc.svg' title='' />
-          <HeaderButton icon='/notif.svg' title='' notif={true} />
-          <HeaderButton icon='/support.svg' title='' border={true} />
+          <HeaderButton icon='/images/doc.svg' title='' />
+          <HeaderButton icon='/images/notif.svg' title='' notif={true} />
+          <HeaderButton icon='/images/support.svg' title='' border={true} />
         </Buttons>
       </Content>
     </Wrapper>

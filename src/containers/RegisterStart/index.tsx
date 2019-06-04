@@ -19,11 +19,11 @@ const RegisterStart = () => (
     <VideoWraper>
       <VideoImages>
         <Player>
-          <img src='/register/play-button.svg' alt='play' />
+          <img src='/images/register/play-button.svg' alt='play' />
         </Player>
       </VideoImages>
       <VideoDescription>
-        <VideoLogo src='/register/injoy-logo.svg' alt='injoy' />
+        <VideoLogo src='/images/register/injoy-logo.svg' alt='injoy' />
         <VideoDescriptionText>
           <strong>Injoy.org</strong> – международная образовательная платформа
         </VideoDescriptionText>
@@ -34,10 +34,10 @@ const RegisterStart = () => (
       <Description>через социальную сеть</Description>
       <Buttons>
         <Button href='#'>
-          <img src='/register/facebook.svg' alt='' />
+          <img src='/images/register/facebook.svg' alt='' />
         </Button>
         <Button href='#'>
-          <img src='/register/vk.svg' alt='' />
+          <img src='/images/register/vk.svg' alt='' />
         </Button>
       </Buttons>
     </Content>

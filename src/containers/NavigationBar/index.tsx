@@ -7,13 +7,13 @@ import { IRouteProps, IUserProps } from '../../types/navigations'
 
 const routes: IRouteProps[] = [
   {
-    icon: '/folder.svg',
+    icon: '/images/folder.svg',
     title: 'Каталог курсов',
     counter: 32,
     path: '/courses'
   },
   {
-    icon: '/books.svg',
+    icon: '/images/books.svg',
     title: 'Мои курсы и проекты',
     counter: 5,
     path: '/my-courses'
@@ -22,7 +22,7 @@ const routes: IRouteProps[] = [
 
 const user: IUserProps = {
   path: '/profile',
-  img: '/users/user.png',
+  img: '/images/users/user.png',
   name: 'Антон Куликов',
   phone: '+7 962 948 78 87'
 }

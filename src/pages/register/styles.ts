@@ -50,7 +50,7 @@ export const Logo = styled.img`
 export const Footer = styled.div`
   margin-top: 50px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 540px) {
     background-color: #fff;
     margin-top: 0;
     padding: 30px 0;
