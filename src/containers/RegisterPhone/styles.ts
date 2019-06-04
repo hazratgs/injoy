@@ -11,6 +11,17 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  position: relative;
+
+  @media (max-width: 540px) {
+    width: calc(100% - 30px);
+    margin: auto;
+    box-shadow: none;
+    height: 420px;
+    padding: 40px 20px;
+    justify-content: flex-start;
+    position: static;
+  }
 `
 
 export const Title = styled.h3`

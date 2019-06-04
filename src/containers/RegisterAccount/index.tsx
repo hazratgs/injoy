@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import Input from '../../components/Input'
 import Buttom from '../../components/Button'
-import { Container, Title, Error } from './styles'
+import FormErrorMessage from '../../components/FormErrorMessage'
+import { Container, Title } from './styles'
 
 interface IFields {
   firstName: string,
@@ -62,7 +63,7 @@ const RegisterAccount = () => {
   return (
     <Container>
       {loginUsed && (
-        <Error>Этот nickname уже занят другим пользователем</Error>
+        <FormErrorMessage>Этот nickname уже занят другим пользователем</FormErrorMessage>
       )}
       <Title>Введите данные</Title>
       <Input
