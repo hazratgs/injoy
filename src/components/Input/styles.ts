@@ -43,11 +43,17 @@ export const InputElement = styled.input<IInputProps>`
   background-color: transparent;
   z-index: 7;
   position: relative;
+  transition: all .3s ease;
 
   &:focus + span {
     transform: translate(0px, -23px);
     font-size: 12px;
     z-index: 10;
+    color: #2992fa;
+  }
+
+  &:focus {
+    border-color: #2992fa;
   }
 
   ${props => props.full && `

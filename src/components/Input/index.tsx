@@ -5,11 +5,14 @@ interface IProps {
   placeholder: string,
   error: boolean,
   checked: boolean,
+  autoFocus?: boolean
   handle: (value: string) => void
 }
 
+
 const Input = (props: IProps) => {
-  const [full, setFull] = useState(false)
+  const autoFocus = !!props.autoFocus
+  const [full, setFull] = useState<boolean>(false)
 
   const onChange = (e: React.SyntheticEvent<HTMLInputElement>): void => {
     const value: string = e.currentTarget.value
@@ -24,6 +27,7 @@ const Input = (props: IProps) => {
         full={full}
         error={props.error}
         checked={props.checked}
+        autoFocus={autoFocus}
       />
       <Placeholder>{props.placeholder}</Placeholder>
       {props.error && <Error />}
