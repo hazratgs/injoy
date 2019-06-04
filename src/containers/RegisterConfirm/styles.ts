@@ -11,6 +11,13 @@ export const Container = styled.div`
   align-items: center;
   flex-direction: column;
   position: relative;
+
+  @media (max-width: 768px) {
+    position: static;
+    width: calc(100% - 30px);
+    margin: auto;
+    height: 280px;
+  }
 `
 
 export const Description = styled.p`
