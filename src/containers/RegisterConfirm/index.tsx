@@ -59,6 +59,7 @@ const RegisterConfirm = () => {
         checked={checked}
         handle={handle}
         autoFocus={true}
+        value={'' + code}
       />
       <Description>Выслать код через {minutes}:{seconds}</Description>
       {!resend ?

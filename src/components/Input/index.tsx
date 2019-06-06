@@ -1,16 +1,9 @@
 import React, { useState } from 'react'
-import { Container, Placeholder, InputElement, Error, Checked } from './styles'
+import { IInputProps } from '../../types/inputs'
+import MaskedInput from 'react-text-mask'
+import { Container, Placeholder, InputElement, Error, Checked, Icon } from './styles'
 
-interface IProps {
-  placeholder: string,
-  error: boolean,
-  checked: boolean,
-  autoFocus?: boolean
-  handle: (value: string) => void
-}
-
-
-const Input = (props: IProps) => {
+const Input = (props: IInputProps) => {
   const autoFocus = !!props.autoFocus
   const [full, setFull] = useState<boolean>(false)
 
@@ -22,18 +15,33 @@ const Input = (props: IProps) => {
 
   return (
     <Container>
-      <InputElement
+      <MaskedInput
+        mask={props.mask}
         onChange={onChange}
-        full={full}
-        error={props.error}
-        checked={props.checked}
-        autoFocus={autoFocus}
+        defaultValue={props.value}
+        render={(ref, _props) => (
+          <InputElement
+            ref={ref}
+            onChange={onChange}
+            full={full}
+            error={props.error}
+            checked={props.checked}
+            autoFocus={autoFocus}
+            {..._props}
+          />
+        )}
       />
       <Placeholder>{props.placeholder}</Placeholder>
       {props.error && <Error />}
       {props.checked && <Checked />}
+      {props.icon && <Icon src={props.icon} />}
     </Container>
   )
+}
+
+Input.defaultProps = {
+  mask: false,
+  value: ''
 }
 
 export default Input

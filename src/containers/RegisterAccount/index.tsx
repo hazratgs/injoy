@@ -71,18 +71,21 @@ const RegisterAccount = () => {
         checked={checked.includes('firstName')}
         error={errors.includes('firstName')}
         handle={handle('firstName')}
+        value={fields.firstName}
       />
       <Input
         placeholder={'Фамилия'}
         checked={checked.includes('lastName')}
         error={errors.includes('lastName')}
         handle={handle('lastName')}
+        value={fields.lastName}
       />
       <Input
         placeholder={'Nickname'}
         checked={checked.includes('login')}
         error={errors.includes('login')}
         handle={handle('login')}
+        value={fields.login}
       />
       <Buttom onClick={submit}>Продолжить</Buttom>
     </Container>

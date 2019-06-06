@@ -16,6 +16,7 @@
     "react-redux": "^7.0.3",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
+    "react-text-mask": "^5.4.3",
     "redux": "^4.0.1",
     "redux-act": "^1.7.5",
     "redux-saga": "^1.0.2",
@@ -46,6 +47,7 @@
   "devDependencies": {
     "@types/history": "^4.7.2",
     "@types/react-redux": "^7.0.9",
-    "@types/react-router-dom": "^4.3.3"
+    "@types/react-router-dom": "^4.3.3",
+    "@types/react-text-mask": "^5.4.5"
   }
 }

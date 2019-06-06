@@ -1,14 +1,10 @@
 import React from 'react'
 import PhoneInput from 'react-phone-number-input'
+import { IInputProps } from '../../types/inputs'
 import { Container, Placeholder, InputElement, Error, Checked } from './styles'
 
-interface IProps {
-  placeholder: string,
-  country: string,
-  error: boolean,
-  checked: boolean,
-  value: string,
-  handle: (value: string) => void
+interface IProps extends IInputProps {
+  country: string
 }
 
 const InputPhone = (props: IProps) => {

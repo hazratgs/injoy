@@ -1,10 +1,5 @@
 import styled from 'styled-components'
-
-interface IInputProps {
-  full: boolean,
-  error: boolean,
-  checked: boolean
-}
+import { IInputStyleProps } from '../../types/inputs'
 
 export const Container = styled.div`
   position: relative;
@@ -30,7 +25,7 @@ export const Placeholder = styled.span`
   border-radius: 10px;
 `
 
-export const InputElement = styled.div<IInputProps>`
+export const InputElement = styled.div<IInputStyleProps>`
    position: relative;
    border-radius: 4px;
    border: solid 1px #e5e5e5;

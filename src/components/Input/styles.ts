@@ -1,10 +1,5 @@
 import styled from 'styled-components'
-
-interface IInputProps {
-  full: boolean,
-  error: boolean,
-  checked: boolean
-}
+import { IInputStyleProps } from '../../types/inputs'
 
 export const Container = styled.div`
   position: relative;
@@ -30,7 +25,7 @@ export const Placeholder = styled.span`
   border-radius: 100%;
 `
 
-export const InputElement = styled.input<IInputProps>`
+export const InputElement = styled.input<IInputStyleProps>`
   width: 100%;
   height: 50px;
   width: 284px;
@@ -88,7 +83,7 @@ export const Error = styled.div`
   top: 0;
   bottom: 0;
   margin: auto;
-  background-image: url('/register/error-input.svg');
+  background-image: url('/images/register/error-input.svg');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -109,4 +104,23 @@ export const Checked = styled.div`
   background-repeat: no-repeat;
   width: 14px;
   height: 14px;
+`
+
+export const Icon = styled.img`
+  display: block;
+  position: absolute;
+  right: 20px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 18px;
+  background-color: #fff;
+  height: 18px;
+
+  ${props => props.src && `
+    background-image: url('${props.src}');
+  `}
 `
