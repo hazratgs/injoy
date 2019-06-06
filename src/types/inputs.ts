@@ -14,3 +14,9 @@ export interface IInputStyleProps {
   error: boolean,
   checked: boolean
 }
+
+export interface ICheckboxProps {
+  items: string[],
+  checked: string[],
+  handle: (value: string) => void
+}
