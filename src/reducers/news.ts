@@ -8,43 +8,50 @@ const initialState: INewsState = {
       title: 'Как вывести общение с коллегами из каменного века?',
       category: 'Разработка',
       image: 'https://www.vitra.com/en-gb/_storage/asset/1563450/storage/v_smallbleed_600x/17067723.jpg',
-      description: ''
+      description: '',
+      url: '/news/hello-world'
     },
     {
       title: 'Как вывести общение с коллегами из каменного века?',
       category: 'Анализ данных',
       image: 'https://pics.wikifeet.com/Caitlin-OConnor-Feet-3885044.jpg',
-      description: ''
+      description: '',
+      url: '/news/hello-world'
     },
     {
       title: 'Как освоить стартовый набор iOS-разработчика?',
       category: 'Анализ данных',
       image: 'https://avatars.mds.yandex.net/get-media-platform/1599454/file_1558679740456/1240x1240',
-      description: ''
+      description: '',
+      url: '/news/hello-world'
     },
     {
       title: 'За что программисты любят программирование?',
       category: 'Разработка',
       image: 'https://adukar.by/images/photo/razrabotchik.jpg',
-      description: 'Мы спросили трех ведущих специалистов Injoy School о том, что им нравится в профессии'
+      description: 'Мы спросили трех ведущих специалистов Injoy School о том, что им нравится в профессии',
+      url: '/news/hello-world'
     },
     {
       title: 'Как вывести общение с коллегами из каменного века?',
       category: 'Разработка',
       image: 'https://www.vitra.com/en-gb/_storage/asset/1563450/storage/v_smallbleed_600x/17067723.jpg',
-      description: ''
+      description: '',
+      url: '/news/hello-world'
     },
     {
       title: 'Как вывести общение с коллегами из каменного века?',
       category: 'Разработка',
       image: 'https://www.vitra.com/en-gb/_storage/asset/1563450/storage/v_smallbleed_600x/17067723.jpg',
-      description: ''
+      description: '',
+      url: '/news/hello-world'
     },
     {
       title: 'Как вывести общение с коллегами из каменного века?',
       category: 'Разработка',
       image: 'https://www.vitra.com/en-gb/_storage/asset/1563450/storage/v_smallbleed_600x/17067723.jpg',
-      description: ''
+      description: '',
+      url: '/news/hello-world'
     }
   ],
   types: [

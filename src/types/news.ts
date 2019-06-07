@@ -8,7 +8,8 @@ export interface INewsItem {
   title: string,
   image: string,
   category: string,
-  description: string
+  description: string,
+  url: string
 }
 
 export interface INewsType {

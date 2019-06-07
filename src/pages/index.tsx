@@ -5,6 +5,7 @@ import Header from '../containers/Header'
 import { Wrapper, Content } from './styles'
 
 import Main from './main'
+import News from './news'
 import Register from './register'
 
 const Pages = () => (
@@ -14,7 +15,8 @@ const Pages = () => (
       <NavigationBar />
       <Content>
         <Switch>
-          <Route path='/' component={Main} />
+          <Route path='/' component={Main} exact />
+          <Route path='/news/:url' component={News} />
         </Switch>
       </Content>
     </Wrapper>

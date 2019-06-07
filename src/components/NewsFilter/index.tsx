@@ -14,7 +14,7 @@ interface IProps {
   selectedTypes: number[]
 }
 
-const CourseFilter = (props: IProps) => {
+const NewsFilter = (props: IProps) => {
   const items = props.items.map((item, i) => {
     const active = props.selectedTypes.includes(item.id)
     return (
@@ -39,4 +39,4 @@ const CourseFilter = (props: IProps) => {
   )
 }
 
-export default CourseFilter
+export default NewsFilter
