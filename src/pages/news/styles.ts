@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
   display: flex;
@@ -25,7 +26,7 @@ export const Title = styled.h1`
   margin: 0;
 `
 
-export const BackButton = styled.button`
+export const BackButton = styled(Link)`
   width: 32px;
   height: 32px;
   background: transparent;

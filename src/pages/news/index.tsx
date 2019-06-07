@@ -20,7 +20,7 @@ const News = () => {
     <Container>
       <Wrappper>
         <Head>
-          <BackButton>
+          <BackButton to='/'>
             <img src='/images/register/left-arrow.svg' alt='back news'/>
           </BackButton>
           <HeadWrapper>

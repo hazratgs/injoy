@@ -10,7 +10,7 @@ import {
 } from './styles'
 
 const SmallNews = (props: INewsItem) => (
-  <Container to='/'>
+  <Container to={props.url}>
     <Content>
       <Category>{props.category}</Category>
       <Title>{props.title}</Title>

@@ -9,7 +9,7 @@ import {
 } from './styles'
 
 const SmallNews = (props: INewsItem) => (
-  <Container to='/'>
+  <Container to={props.url}>
     <Image src={props.image} />
     <Content>
       <Category>{props.category}</Category>
