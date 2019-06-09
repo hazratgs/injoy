@@ -7,6 +7,7 @@ import { Wrapper, Content } from './styles'
 import Main from './main'
 import News from './news'
 import Register from './register'
+import Profile from './profile'
 
 const Pages = () => (
   <>
@@ -17,6 +18,7 @@ const Pages = () => (
         <Switch>
           <Route path='/' component={Main} exact />
           <Route path='/news/:url' component={News} />
+          <Route path='/profile' component={Profile} />
         </Switch>
       </Content>
     </Wrapper>
