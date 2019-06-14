@@ -5,7 +5,7 @@ import ProfileProgress from '../../components/ProfileProgress'
 import ProfileList from '../../components/ProfileList'
 import ProfileEducation from '../../components/ProfileEducation'
 import ProfileProject from '../../components/ProfileProject'
-import { IProfileList } from '../../types/profile'
+import { IProfileList, IProfileEducation } from '../../types/profile'
 import {
   Container,
   Head,
@@ -41,7 +41,7 @@ const educations: IProfileList[] = [
   }
 ]
 
-const projects: IProfileList[] = [
+const projects: IProfileEducation[] = [
   {
     id: 1,
     title: 'Новые подходы к обучению детей'
@@ -60,16 +60,16 @@ const projects: IProfileList[] = [
   }
 ]
 
-const renderEducation = (item: IProfileList) => <ProfileEducation {...item} />
+const renderEducation = (item: IProfileList) => <ProfileEducation key={item.id} {...item} />
 
-const renderProject = (item: IProfileList) => <ProfileProject {...item} />
+const renderProject = (item: IProfileList) => <ProfileProject key={item.id} {...item} />
 
 const ProfilePage = () => {
   return (
     <Container>
       <Head>
         <Title>Профиль</Title>
-        <ButtonOutline to='/profile/read'>Редактировать</ButtonOutline>
+        <ButtonOutline to='/profile/edit'>Редактировать</ButtonOutline>
       </Head>
       <ProfileCard />
       <GroupTitle>
@@ -85,14 +85,14 @@ const ProfilePage = () => {
           <img src='/images/profile/info.svg' alt='' />
         </Info>
       </GroupTitle>
-      <ProfileList items={educations} render={renderEducation} />
+      <ProfileList<IProfileEducation> items={educations} render={renderEducation} />
       <GroupTitle>
         Проекты
         <Info>
           <img src='/images/profile/info.svg' alt='' />
         </Info>
       </GroupTitle>
-      <ProfileList items={projects} render={renderProject} />
+      <ProfileList<IProfileList> items={projects} render={renderProject} />
     </Container>
   )
 }

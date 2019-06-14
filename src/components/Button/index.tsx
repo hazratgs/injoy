@@ -1,13 +1,8 @@
 import React from 'react'
+import { IButtonProps } from '../../types/buttons'
 import { Element } from './styles'
 
-interface IProps {
-  children: React.ReactChild,
-  onClick: (e: React.SyntheticEvent<HTMLButtonElement>) => void,
-  disabled?: boolean
-}
-
-const Button = (props: IProps) => {
+const Button = (props: IButtonProps) => {
   return (
     <Element
       onClick={props.onClick}

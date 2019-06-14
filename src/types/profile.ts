@@ -4,3 +4,8 @@ export interface IProfileList {
   status?: boolean,
   date?: string
 }
+
+export interface IProfileEducation {
+  id: number,
+  title: string
+}

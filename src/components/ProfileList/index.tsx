@@ -1,16 +1,14 @@
 import React, { useState } from 'react'
 import { Container, ViewButton } from './styles'
-import { IProfileList } from '../../types/profile'
 
-
-interface IProps {
-  items: IProfileList[],
-  render: (item: IProfileList) => JSX.Element
+interface IProps<T> {
+  items: T[],
+  render: (item: T) => JSX.Element
 }
 
 const viewQuanty = 2
 
-export const ProfileEducation = (props: IProps) => {
+function ProfileList<T>(props: IProps<T>): JSX.Element {
   const [view, setView] = useState<boolean>(false)
 
   const items = props.items.map((item, i) => {
@@ -26,4 +24,4 @@ export const ProfileEducation = (props: IProps) => {
   )
 }
 
-export default ProfileEducation
+export default ProfileList

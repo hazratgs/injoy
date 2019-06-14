@@ -2,7 +2,7 @@ import React from 'react'
 import { ILinkProps } from '../../types/buttons'
 import { Element } from './styles'
 
-const Button = (props: ILinkProps) => {
+const ButtonTransparent = (props: ILinkProps) => {
   return (
     <Element to={props.to}>
       {props.children}
@@ -10,4 +10,4 @@ const Button = (props: ILinkProps) => {
   )
 }
 
-export default Button
+export default ButtonTransparent

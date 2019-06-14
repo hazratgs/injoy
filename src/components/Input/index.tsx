@@ -5,7 +5,7 @@ import { Container, Placeholder, InputElement, Error, Checked, Icon } from './st
 
 const Input = (props: IInputProps) => {
   const autoFocus = !!props.autoFocus
-  const [full, setFull] = useState<boolean>(false)
+  const [full, setFull] = useState<boolean>(!!props.value)
 
   const onChange = (e: React.SyntheticEvent<HTMLInputElement>): void => {
     const value: string = e.currentTarget.value
