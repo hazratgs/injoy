@@ -53,6 +53,17 @@ export const Button = styled.button<ButtonProps>`
     ${props => props.notif && `
       display: block;
     `}
+
+    @media (max-width: 768px) {
+      width: 10px;
+      height: 10px;
+      right: 9px;
+      top: 7px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    background-color: transparent;
   }
 `
 

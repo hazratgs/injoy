@@ -3,7 +3,7 @@ import { Container, Button, Icon } from './styles'
 
 interface IProps {
   icon: string,
-  title: string,
+  title?: string,
   border?: boolean,
   notif?: boolean
 }
@@ -11,6 +11,7 @@ interface IProps {
 const HeaderButton = (props: IProps) => {
   const border = !!props.border
   const notif = !!props.notif
+
   return (
     <Container border={border}>
       <Button notif={notif}>

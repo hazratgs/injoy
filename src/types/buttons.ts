@@ -6,5 +6,6 @@ export interface IButtonProps {
 
 export interface ILinkProps {
   to: string,
-  children: React.ReactChild
+  children: React.ReactChild,
+  adaptive?: boolean
 }

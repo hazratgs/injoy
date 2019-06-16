@@ -4,10 +4,19 @@ export const Container = styled.div`
   padding: 0 30px 10px;
   border-bottom: 1px solid rgba(0, 0, 0, .1);
   margin-bottom: 30px;
+
+  @media (max-width: 768px) {
+    border-bottom: 0;
+    margin-bottom: 0;
+  }
 `
 
 export const Wrapper = styled.div`
   display: flex;
+
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+  }
 `
 
 export const Item = styled.div`
@@ -40,6 +49,27 @@ export const Item = styled.div`
     display: block;
     margin-top: 10px;
     font-size: 14px;
+  }
+
+  @media (max-width: 768px) {
+    width: 78px;
+    box-sizing: content-box;
+    padding: 0 15px 0 0;
+
+    .img {
+      width: 50px;
+      height: 50px;
+
+      img {
+        height: 32px;
+        width: 32px;
+      }
+    }
+
+    span {
+      font-size: 10px;
+      margin-top: 5px;
+    }
   }
 `
 

@@ -5,9 +5,7 @@ import { IProfileList } from '../../types/profile'
 export const ProfileEducation = (props: IProfileList) => {
   return (
     <Item key={props.id}>
-      <img src='/images/profile/check.svg' alt='check' />
       <p>{props.title}</p>
-      <span>{props.date}</span>
     </Item>
   )
 }

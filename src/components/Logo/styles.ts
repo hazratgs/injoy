@@ -9,4 +9,14 @@ export const LogoContainer = styled(Link)`
   align-items: center;
   padding: 0 20.5px;
   text-decoration: none;
+
+  @media (max-width: 768px) {
+    height: 60px;
+    background-color: transparent;
+    padding: 0;
+
+    img {
+      height: 35px;
+    }
+  }
 `

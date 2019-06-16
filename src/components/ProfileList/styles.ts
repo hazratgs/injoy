@@ -5,6 +5,11 @@ export const Container = styled.div`
   position: relative;
   border-bottom: 1px solid rgba(0, 0, 0, .1);
   margin-bottom: 30px;
+
+  @media (max-width: 768px) {
+    padding: 0 30px;
+    margin-bottom: 0;
+  }
 `
 
 export const ViewButton = styled.button`
@@ -20,4 +25,8 @@ export const ViewButton = styled.button`
   position: relative;
   display: block;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    bottom: -13px;
+  }
 `

@@ -20,4 +20,19 @@ export const Item = styled.div`
     font-size: 14px;
     color: #c4c4c4;
   }
+
+  @media (max-width: 768px) {
+    img {
+      width: 8px;
+    }
+
+    p {
+      font-size: 14px;
+      font-weight: normal;
+    }
+
+    span {
+      font-size: 12px;
+    }
+  }
 `

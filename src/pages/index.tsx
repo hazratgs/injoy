@@ -2,6 +2,7 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import NavigationBar from '../containers/NavigationBar'
 import Header from '../containers/Header'
+import HeaderMobile from '../containers/HeaderMobile'
 import { Wrapper, Content } from './styles'
 
 import Main from './main'
@@ -12,6 +13,7 @@ import Profile from './profile'
 const Pages = () => (
   <>
     <Header />
+    <HeaderMobile />
     <Wrapper>
       <NavigationBar />
       <Content>

@@ -4,7 +4,7 @@ import { Element } from './styles'
 
 const Button = (props: ILinkProps) => {
   return (
-    <Element to={props.to}>
+    <Element to={props.to} adaptive={props.adaptive}>
       {props.children}
     </Element>
   )

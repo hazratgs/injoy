@@ -1,7 +1,11 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-export const Element = styled(Link)`
+interface Props {
+  adaptive?: boolean
+}
+
+export const Element = styled(Link)<Props>`
   border-radius: 30px;
   background-color: transparent;
   height: 40px;
@@ -34,5 +38,22 @@ export const Element = styled(Link)`
     box-shadow: none;
     background-color: #c4c4c4;
     cursor: default;
+  }
+
+  @media (max-width: 768px) {
+    ${props => props.adaptive && `
+      border: none;
+      border-radius: none;
+      height: 40px;
+      width: 40px;
+
+      &:hover {
+        background-color: rgba(41, 146, 250, 0.21);
+      }
+
+      span {
+        display: none;
+      }
+    `}
   }
 `

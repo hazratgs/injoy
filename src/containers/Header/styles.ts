@@ -5,6 +5,10 @@ export const Container = styled.div`
   display: flex;
   background-color: #fff;
   padding-left: 280px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
 
 export const Wrapper = styled.div`

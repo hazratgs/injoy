@@ -69,7 +69,12 @@ const ProfilePage = () => {
     <Container>
       <Head>
         <Title>Профиль</Title>
-        <ButtonOutline to='/profile/edit'>Редактировать</ButtonOutline>
+        <ButtonOutline to='/profile/edit' adaptive={true}>
+          <>
+            <img src='/images/profile/edit-icon.svg' alt='edit'/>
+            <span>Редактировать</span>
+          </>
+        </ButtonOutline>
       </Head>
       <ProfileCard />
       <GroupTitle>

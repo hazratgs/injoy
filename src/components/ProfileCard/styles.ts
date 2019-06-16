@@ -7,6 +7,15 @@ export const Container = styled.div`
   display: flex;
   /* align-items: center; */
   margin: 30px;
+
+  @media (max-width: 768px) {
+    border-radius: 0;
+    margin: 0;
+    border: 0;
+    flex-wrap: wrap;
+    padding: 0 30px 15px;
+    border-bottom: 1px solid #e6e6e6;
+  }
 `
 
 export const Image = styled.div`
@@ -17,6 +26,18 @@ export const Image = styled.div`
     width: 100px;
     height: 100px;
     border-radius: 100%;
+  }
+  
+  @media (max-width: 768px) {
+    margin: 0;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    
+    img {
+      width: 80px;
+      height: 80px;
+    }
   }
 `
 
@@ -30,6 +51,13 @@ export const Circle = styled.div`
   border-radius: 100%;
   z-index: 5;
   background-color: #02bd82;
+
+  @media (max-width: 768px) {
+    bottom: 0px;
+    right: 4px;
+    width: 17px;
+    height: 17px;
+  }
 `
 
 export const UserName = styled.div`
@@ -53,6 +81,19 @@ export const UserName = styled.div`
       font-weight: 500;
     }
   }
+
+  @media (max-width: 768px) {
+    flex: calc(100% - 160px);
+    margin: 10px 0 14px;
+
+    h2 {
+      font-size: 18px;
+    }
+
+    span {
+      font-size: 14px;
+    }
+  }
 `
 
 export const UserContact = styled.div`
@@ -62,7 +103,16 @@ export const UserContact = styled.div`
   align-content: center;
   justify-content: center;
   flex-direction: column;
-  padding: 0 45px 0 30px
+  padding: 0 45px 0 30px;
+
+  @media (max-width: 768px) {
+    flex: 1;
+    border: none;
+    padding: 25px 30px 10px 0;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
 `
 
 export const UserContactItem = styled.p`
@@ -77,5 +127,16 @@ export const UserContactItem = styled.p`
   span {
     padding-left: 15px;
     font-size: 14px;
+  }
+
+  @media (max-width: 768px) {
+    img {
+      width: 16px;
+      height: 16px;
+    }
+
+    span {
+      font-size: 14px;
+    }
   }
 `
