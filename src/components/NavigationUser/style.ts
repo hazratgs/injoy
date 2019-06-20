@@ -12,6 +12,14 @@ export const Container = styled.div`
   border-top: 1px solid #424242;
   background-color: #373737;
   width: 100%;
+
+  @media (max-width: 768px) {
+    position: relative;
+    background-color: transparent;
+    border: none;
+    height: auto;
+    padding: 20px;
+  }
 `
 
 export const Link = styled(NavLink)`

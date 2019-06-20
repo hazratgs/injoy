@@ -2,6 +2,7 @@ import React from 'react'
 import Logo from '../../components/Logo'
 import NavigationItem from '../../components/NavitgationItem'
 import NavigationUser from '../../components/NavigationUser'
+import HeaderSearch from '../../components/HeaderSearch'
 import { Container, Wrapper } from './styles'
 import { IRouteProps, IUserProps } from '../../types/navigations'
 
@@ -17,6 +18,22 @@ const routes: IRouteProps[] = [
     title: 'Мои курсы и проекты',
     counter: 5,
     path: '/my-courses'
+  },
+  {
+    icon: '/images/news.svg',
+    title: 'Новости',
+    path: '/'
+  },
+  {
+    icon: '/images/notif.svg',
+    title: 'Уведомления',
+    counter: 8,
+    path: '/notif'
+  },
+  {
+    icon: '/images/support.svg',
+    title: 'FAQ',
+    path: '/support'
   }
 ]
 
@@ -35,10 +52,11 @@ const NavigationBar: React.FC = () => {
   return (
     <Container>
       <Logo />
+      <HeaderSearch />
+      <NavigationUser {...user} />
       <Wrapper>
         {items}
       </Wrapper>
-      <NavigationUser {...user} />
     </Container>
   )
 }

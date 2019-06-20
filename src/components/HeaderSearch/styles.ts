@@ -9,6 +9,12 @@ export const Container = styled.div`
   width: 100%;
   position: relative;
   box-sizing: content-box;
+
+  @media (max-width: 768px) {
+    padding: 0 20px;
+    height: auto;
+    box-sizing: border-box;
+  }
 `
 
 export const Input = styled.input`
@@ -20,6 +26,9 @@ export const Input = styled.input`
   font-size: 14px;
   outline: none;
   transition: all .3s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   &:hover {
     border: solid 1px rgba(0,0,0, 0.3);
@@ -27,6 +36,16 @@ export const Input = styled.input`
 
   &:focus {
     border: solid 1px #2992fa;
+  }
+
+  @media (max-width: 768px) {
+    border-radius: 116px;
+    border-color: rgba(255, 255, 255, 0.1);
+    background-color: #313131;
+    box-sizing: border-box;
+    font-size: 13px;
+    padding: 0 25px;
+    color: #fff;
   }
 `
 
@@ -36,4 +55,8 @@ export const Icon = styled.img`
   top: 0;
   bottom: 0;
   margin: auto;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `

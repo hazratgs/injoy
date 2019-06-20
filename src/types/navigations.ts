@@ -1,7 +1,7 @@
 export interface IRouteProps {
   icon: string,
   title: string,
-  counter: number,
+  counter?: number,
   path: string
 }
 
