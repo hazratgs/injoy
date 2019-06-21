@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+interface IProps {
+  visibility: boolean
+}
+
+export const Container = styled.div<IProps>`
   height: 100vh;
   background-color: red;
   width: 280px;
@@ -23,6 +27,17 @@ export const Container = styled.div`
     left: auto;
     background-color: #3d3d3d;
     padding: 20px 0;
+    will-change: transform; 
+    /* opacity: 0; */
+    visibility: hidden;
+    transform: translateX(100%);
+    transition: all .3s ease;
+
+    ${props => props.visibility && `
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0%);
+    `}
 
     .navbar-logo {
       display: none;

@@ -5,7 +5,7 @@ import { IUserProps } from '../../types/navigations'
 const NavigationUser = (props: IUserProps) => {
   return (
     <Container>
-      <Link to={props.path}>
+      <Link to={props.path} onClick={props.handle}>
         <Avatar src={props.img} alt={props.name} />
         <Wrapper>
           <Name>{props.name}</Name>
