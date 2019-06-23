@@ -60,18 +60,18 @@ export const InputElement = styled.input<IInputStyleProps>`
   `}
 
   ${props => props.checked && `
-    border-color: #02bd82;
+    border-color: #02bd82!important;
 
     & + span {
-      color: #02bd82;
+      color: #02bd82!important;
     }
   `}
 
   ${props => props.error && `
-    border-color: #ed4b34;
+    border-color: #ed4b34!important;
 
     & + span {
-      color: #ed4b34;
+      color: #ed4b34!important;
     }
   `}
 `

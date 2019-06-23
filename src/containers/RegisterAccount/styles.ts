@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   width: 458px;
-  height: 500px;
+  padding: 85px 0;
   background-color: #fff;
   display: flex;
   justify-content: center;

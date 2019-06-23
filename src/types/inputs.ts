@@ -3,6 +3,7 @@ export interface IInputProps {
   error: boolean,
   checked: boolean,
   value: string,
+  type?: string,
   autoFocus?: boolean,
   icon?: string
   mask?: Array<string | RegExp> | boolean,

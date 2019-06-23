@@ -27,6 +27,7 @@ const Input = (props: IInputProps) => {
             error={props.error}
             checked={props.checked}
             autoFocus={autoFocus}
+            type={props.type}
             {..._props}
           />
         )}
@@ -41,7 +42,8 @@ const Input = (props: IInputProps) => {
 
 Input.defaultProps = {
   mask: false,
-  value: ''
+  value: '',
+  type: 'text'
 }
 
 export default Input
