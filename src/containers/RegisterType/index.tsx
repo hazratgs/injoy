@@ -1,45 +1,56 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { withRouter, RouteComponentProps } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { changeProfileField, updateProfile } from '../../actions/profile'
 import Checkbox from '../../components/Checkbox'
 import Button from '../../components/Button'
+import { AppState } from '../../types/state'
+import { FieldType } from '../../types/field'
 import { Container, Title } from './styles'
 
-const types: string[] = [
-  'Преподователь',
-  'Школьник',
-  'Студент',
-  'Родитель школьника',
-  'Автор курсов',
-  'Представитель образовательного учреждения',
-  'Инвестор',
-  'Другое'
-]
+interface IProps extends RouteComponentProps {
+  types: string[],
+  roles: string[],
+  changeProfileField: (field: FieldType<string[]>) => void,
+  updateProfile: () => void
+}
 
-const RegisterType = () => {
-  const [checked, setChecked] = useState<string[]>([])
-  const handle = (value: string): void => {
-    const update = checked.includes(value) ?
-      checked.filter((item: string) => item !== value) :
-      [...checked, value]
+const enhance = connect(
+  (state: AppState) => ({
+    types: state.profile.types,
+    roles: state.profile.data.roles
+  }),
+  { changeProfileField, updateProfile }
+)
 
-      setChecked(update)
+const RegisterType = (props: IProps) => {
+  const { types, roles, changeProfileField, updateProfile } = props
+
+  const handle = (key: string) => (value: string): void => {
+    changeProfileField({
+      key,
+      value: !roles.includes(value) ?
+        [...roles, value] :
+        roles.filter((item: string) => item !== value)
+    })
   }
 
   const submit = (): void => {
-
+    updateProfile()
+    props.history.push('/')
   }
 
-  console.log(checked)
   return (
     <Container>
       <Title>В качестве кого вы регистрируетесь?</Title>
       <Checkbox
         items={types}
-        checked={checked}
-        handle={handle}
+        checked={roles}
+        handle={handle('roles')}
       />
-      <Button onClick={submit}>Продолжить</Button>
+      <Button onClick={submit} disabled={roles.length < 1}>Продолжить</Button>
     </Container>
   )
 }
 
-export default RegisterType
+export default withRouter(enhance(RegisterType))

@@ -19,7 +19,17 @@ const initialState: IProfileState = {
     roles: []
   },
   checked: [],
-  errors: []
+  errors: [],
+  types: [
+    'Преподователь',
+    'Школьник',
+    'Студент',
+    'Родитель школьника',
+    'Автор курсов',
+    'Представитель образовательного учреждения',
+    'Инвестор',
+    'Другое'
+  ]
 }
 
 const reducer = createReducer<typeof initialState>({}, initialState)
@@ -44,7 +54,7 @@ reducer.on(actions.errorsFields, (state, payload: string[]) => ({
   errors: payload
 }))
 
-reducer.on(actions.changeProfileField, (state, payload: FieldType) => ({
+reducer.on(actions.changeProfileField, (state, payload: FieldType<string | string[]>) => ({
   ...state,
   data: {
     ...state.data,

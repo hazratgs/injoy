@@ -24,7 +24,7 @@ const fetchCheckPhone = (mobile: string): Promise<object> =>
 const fetchConfirmCode = (data: ConfirmCodeType): Promise<object> =>
   axios.post('/users/recover/confirm', data)
 
-function* changeField(action: Action<FieldType>) {
+function* changeField(action: Action<FieldType<string>>) {
   try {
     const state: AppState = yield select()
     const { key, value } = action.payload

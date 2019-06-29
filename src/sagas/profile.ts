@@ -11,7 +11,10 @@ import { conformToMask } from 'react-text-mask'
 
 const fethProfile = (): Promise<object> => axios.get('/users/profile')
 
-function* changeProfileField(action: Action<FieldType>) {
+const fethUpdateProfile = (profile: IProfileData): Promise<object> =>
+  axios.put('/users/profile', profile)
+
+function* changeProfileField(action: Action<FieldType<string>>) {
   try {
     const state: AppState = yield select()
     const { key, value } = action.payload
@@ -81,10 +84,25 @@ function* getProfile() {
   }
 }
 
+function* updateProfile() {
+  try {
+    const state: AppState = yield select()
+    const profile: IProfileData = state.profile.data
+
+    yield call(fethUpdateProfile, profile)
+
+    yield put(actions.updateProfileSuccess())
+  } catch (e) {
+    yield put(actions.updateProfileError())
+    console.log('ERROR updateProfile', e.message)
+  }
+}
+
 export default function* watcher() {
   yield takeLatest(actions.authUser, authUser)
   yield takeLatest(actions.getProfile, getProfile)
   yield takeLatest(actions.changeProfileField, changeProfileField)
   yield takeLatest(actions.changeProfileFieldSuccess, changeProfileFieldSuccess)
   yield takeLatest(actions.checkBrithDay, checkBrithDay)
+  yield takeLatest(actions.updateProfile, updateProfile)
 }

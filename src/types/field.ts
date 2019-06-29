@@ -1,6 +1,6 @@
-export type FieldType = {
+export type FieldType<T extends (string | string[])> = {
   key: string,
-  value: string
+  value: T
 }
 
 export type CheckFieldType = {

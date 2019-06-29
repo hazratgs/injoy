@@ -18,7 +18,7 @@ const initialState: IRegisterState = {
 
 const reducer = createReducer<typeof initialState>({}, initialState)
 
-reducer.on(actions.changeField, (state, payload: FieldType) => ({
+reducer.on(actions.changeField, (state, payload: FieldType<string>) => ({
   ...state,
   [payload.key]: payload.value
 }))

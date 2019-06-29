@@ -17,7 +17,7 @@ interface IProps {
   errors: string[],
   countries: string[],
   cities: string[],
-  changeProfileField: (filed: FieldType) => void,
+  changeProfileField: (filed: FieldType<string>) => void,
   push: (path: string) => void
 }
 

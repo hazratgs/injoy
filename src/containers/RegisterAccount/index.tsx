@@ -17,7 +17,7 @@ interface IProps {
   errors: string[],
   checked: string[],
   verificationAccount: () => void,
-  changeField: (field: FieldType) => void
+  changeField: (field: FieldType<string>) => void
 }
 
 const enhance = connect(

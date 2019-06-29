@@ -14,7 +14,7 @@ interface IProps {
   code: string
   checked: string[]
   errors: string[]
-  changeField: (field: FieldType) => void,
+  changeField: (field: FieldType<string>) => void,
   confirmCode: () => void,
   register: () => void
 }

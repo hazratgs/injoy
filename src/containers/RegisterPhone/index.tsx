@@ -14,7 +14,7 @@ interface IProps {
   checked: string[],
   registerStatus: boolean,
   register: () => void,
-  changeField: (field: FieldType) => void
+  changeField: (field: FieldType<string>) => void
 }
 
 const enhance = connect(

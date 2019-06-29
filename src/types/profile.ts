@@ -7,7 +7,8 @@ export interface AuthType {
 export interface IProfileState extends AuthType {
   data: IProfileData,
   checked: string[],
-  errors: string[]
+  errors: string[],
+  types: string[]
 }
 
 export interface IProfileList {
