@@ -8,7 +8,7 @@ import FormErrorMessage from '../../components/FormErrorMessage'
 import secondsToTime from '../../utils/secondsToTime'
 import { Container, Description } from './styles'
 import { AppState } from '../../types/state'
-import { FieldType } from '../../types/register'
+import { FieldType } from '../../types/field'
 
 interface IProps {
   code: string

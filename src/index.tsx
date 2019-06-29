@@ -10,7 +10,8 @@ import * as serviceWorker from './serviceWorker';
 const store = configureStore()
 
 axios.defaults.baseURL = 'https://cors-anywhere.herokuapp.com/http://116.203.134.94/api'
-const Application: React.FC = () => (
+
+const Application = () => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Pages />

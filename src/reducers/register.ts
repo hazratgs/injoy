@@ -1,6 +1,7 @@
 import { createReducer } from 'redux-act'
 import * as actions from '../actions/register'
-import { IRegisterState, FieldType } from '../types/register'
+import { IRegisterState } from '../types/register'
+import { FieldType } from '../types/field'
 
 const initialState: IRegisterState = {
   firstName: '',

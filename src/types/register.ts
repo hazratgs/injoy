@@ -19,16 +19,6 @@ export interface IRegisterData {
   mobile: string
 }
 
-export type FieldType = {
-  key: string,
-  value: string
-}
-
-export type CheckFieldType = {
-  field: string,
-  type: 'error' | 'checked' | 'clear'
-}
-
 export type ConfirmCodeType = {
   mobile: string,
   code: string

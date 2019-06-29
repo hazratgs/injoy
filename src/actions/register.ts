@@ -1,5 +1,5 @@
 import { createAction } from 'redux-act'
-import { FieldType, CheckFieldType } from '../types/register'
+import { FieldType, CheckFieldType } from '../types/field'
 
 export const register = createAction('REGISTER')
 export const registerSuccess = createAction('REGISTER_SUCCESS')

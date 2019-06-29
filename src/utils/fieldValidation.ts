@@ -1,4 +1,4 @@
-import { CheckFieldType } from '../types/register'
+import { CheckFieldType } from '../types/field'
 
 interface IFieldType extends CheckFieldType {
   errors: string[],

@@ -5,7 +5,7 @@ import InputPhone from '../../components/InputPhone'
 import Button from '../../components/Button'
 import FormErrorMessage from '../../components/FormErrorMessage'
 import { AppState } from '../../types/state'
-import { FieldType } from '../../types/register'
+import { FieldType } from '../../types/field'
 import { Container, Title } from './styles'
 
 interface IProps {

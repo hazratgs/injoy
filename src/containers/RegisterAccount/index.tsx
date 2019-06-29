@@ -4,7 +4,7 @@ import { changeField, verificationAccount } from '../../actions/register'
 import Input from '../../components/Input'
 import Buttom from '../../components/Button'
 import FormErrorMessage from '../../components/FormErrorMessage'
-import { FieldType } from '../../types/register'
+import { FieldType } from '../../types/field'
 import { AppState } from '../../types/state'
 import { Container, Title } from './styles'
 

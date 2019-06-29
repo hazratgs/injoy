@@ -2,7 +2,8 @@ import { takeLatest, put, call, select } from 'redux-saga/effects'
 import { push } from 'connected-react-router'
 import axios from 'axios'
 import { Action } from 'redux-act'
-import { IRegisterData, FieldType, CheckFieldType, ConfirmCodeType } from '../types/register'
+import { IRegisterData, ConfirmCodeType } from '../types/register'
+import { FieldType, CheckFieldType } from '../types/field'
 import { AuthType } from '../types/profile'
 import { isValidPhoneNumber } from 'react-phone-number-input/max'
 import { conformToMask } from 'react-text-mask'
@@ -232,9 +233,7 @@ function* confirmCode() {
 
     const authData: AuthType = respone.data
     yield put(profileActions.authUser(authData))
-
-    window.localStorage.setItem('token', respone.data.token)
-
+    yield put(push('/register/user-info'))
   } catch (e) {
     yield put(actions.changeCheckField({ field: 'code', type: 'error' }))
     console.log('ERROR confirmCode', e.message)

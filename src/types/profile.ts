@@ -1,11 +1,13 @@
 export interface AuthType {
   id: string,
   name: string,
-  token: string | null
+  token: string
 }
 
 export interface IProfileState extends AuthType {
-
+  data: IProfileData,
+  checked: string[],
+  errors: string[]
 }
 
 export interface IProfileList {
@@ -18,4 +20,16 @@ export interface IProfileList {
 export interface IProfileEducation {
   id: number,
   title: string
+}
+
+export interface IProfileData {
+  id: string,
+  firstName: string,
+  lastName: string,
+  middleName: string,
+  mobile: string,
+  country: string,
+  city: string,
+  dateOfBirth: string,
+  roles: string[]
 }

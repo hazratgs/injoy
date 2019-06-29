@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
+import { getCountries } from '../actions/countries'
 import { Switch, Route } from 'react-router-dom'
 import NavigationBar from '../containers/NavigationBar'
 import Header from '../containers/Header'
@@ -10,28 +12,43 @@ import News from './news'
 import Register from './register'
 import Profile from './profile'
 
-const Pages = () => (
-  <>
-    <Header />
-    <HeaderMobile />
-    <Wrapper>
-      <NavigationBar />
-      <Content>
-        <Switch>
-          <Route path='/' component={Main} exact />
-          <Route path='/news/:url' component={News} />
-          <Route path='/profile' component={Profile} />
-        </Switch>
-      </Content>
-    </Wrapper>
-  </>
-)
+interface ISectionProps {
+  getCountries: () => void
+}
 
-const Sections = () => (
-  <Switch>
-    <Route path='/register' component={Register} />
-    <Route path='/' component={Pages} />
-  </Switch>
-)
+const enhance = connect(null, { getCountries })
 
-export default Sections
+const Pages = () => {
+  return (
+    <>
+      <Header />
+      <HeaderMobile />
+      <Wrapper>
+        <NavigationBar />
+        <Content>
+          <Switch>
+            <Route path='/' component={Main} exact />
+            <Route path='/news/:url' component={News} />
+            <Route path='/profile' component={Profile} />
+          </Switch>
+        </Content>
+      </Wrapper>
+    </>
+  )
+}
+const Sections = (props: ISectionProps) => {
+  const { getCountries } = props
+
+  useEffect(() => {
+    getCountries()
+  }, [])
+
+  return (
+    <Switch>
+      <Route path='/register' component={Register} />
+      <Route path='/' component={Pages} />
+    </Switch>
+  )
+}
+
+export default enhance(Sections)

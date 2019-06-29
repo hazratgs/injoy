@@ -1,58 +1,42 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { connect } from 'react-redux'
+import { push } from 'connected-react-router'
 import Button from '../../components/Button'
 import Select from '../../components/Select'
 import Input from '../../components/Input'
 import FormErrorMessage from '../../components/FormErrorMessage'
-import isDate from '../../utils/isDate'
+import { changeProfileField } from '../../actions/profile'
+import { IProfileData } from '../../types/profile'
+import { FieldType } from '../../types/field'
+import { AppState } from '../../types/state'
 import { Container, Title } from './styles'
 
-interface IFiels {
-  country: string,
-  city: string,
-  brithDay: string
+interface IProps {
+  profile: IProfileData,
+  checked: string[],
+  errors: string[],
+  countries: string[],
+  cities: string[],
+  changeProfileField: (filed: FieldType) => void,
+  push: (path: string) => void
 }
 
-const country: string[] = [
-  'Россия',
-  'Украина',
-  'Белорусия'
-]
+const enhance = connect(
+  (state: AppState) => ({
+    profile: state.profile.data,
+    checked: state.profile.checked,
+    errors: state.profile.errors,
+    countries: state.countries.countries,
+    cities: state.countries.cities
+  }),
+  { changeProfileField, push }
+)
 
-const city: string[] = [
-  'Москва',
-  'Санкт-Петербург'
-]
+const RegisterUserInfo = (props: IProps) => {
+  const { profile, errors, checked, countries, cities, changeProfileField, push } = props
 
-const RegisterUserInfo = () => {
-  const [fields, setFields] = useState<IFiels>({
-    country: '',
-    city: '',
-    brithDay: ''
-  })
-  const [errors, setErrors] = useState<string[]>([])
-  const [checked, setChecked] = useState<string[]>([])
-
-  const handle = (name: string) => (value: string): void => {
-    setFields({ ...fields, [name]: value })
-    setErrors(errors.filter(item => item !== name))
-
-    if (name === 'brithDay' && isDate(value)) {
-      setChecked([...checked, name])
-    } else {
-      setChecked(checked.filter(item => item !== 'brithDay'))
-    }
-  }
-
-  const submit = (): void => {
-    const errors: string[] = []
-    
-    if (!isDate(fields.brithDay)) errors.push('brithDay')
-
-    if (errors.length) {
-      setErrors(errors)
-    } else {
-
-    }
+  const handle = (key: string) => (value: string): void => {
+    changeProfileField({ key, value })
   }
 
   return (
@@ -66,30 +50,35 @@ const RegisterUserInfo = () => {
         placeholder='Страна'
         error={errors.includes('country')}
         checked={checked.includes('country')}
-        value={fields.country}
-        options={country}
+        value={profile.country}
+        options={countries}
         handle={handle('country')}
       />
       <Select
         placeholder='Город'
         error={errors.includes('city')}
         checked={checked.includes('city')}
-        value={fields.city}
-        options={city}
+        value={profile.city}
+        options={cities}
         handle={handle('city')}
       />
       <Input
         placeholder='День рождения'
-        error={errors.includes('brithDay')}
-        checked={checked.includes('brithDay')}
-        handle={handle('brithDay')}
-        value={fields.brithDay}
-        mask={[/[0-3]/, /[0-9]/, '.', /[0-1]/, /[0-9]/, '.', /[1-2]/, /[0-9]/, /[0-9]/, /[0-9]/]}
+        error={errors.includes('dateOfBirth')}
+        checked={checked.includes('dateOfBirth')}
+        handle={handle('dateOfBirth')}
+        value={profile.dateOfBirth}
+        mask={[/[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/]}
         icon='/images/register/input-date.svg'
       />
-      <Button onClick={submit}>Продолжить</Button>
+      <Button
+        disabled={!checked.includes('dateOfBirth')}
+        onClick={() => push('/register/type')}
+      >
+        Продолжить
+      </Button>
     </Container>
   )
 }
 
-export default RegisterUserInfo
+export default enhance(RegisterUserInfo)
