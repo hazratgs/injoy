@@ -23,6 +23,7 @@ const InputPhone = (props: IProps) => {
           value={props.value}
           country={props.country}
           onChange={onChange}
+          autoFocus
         />
       </InputElement>
       <Placeholder>{props.placeholder}</Placeholder>

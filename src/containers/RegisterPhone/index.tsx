@@ -1,49 +1,53 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { connect } from 'react-redux'
+import { register, changeField } from '../../actions/register'
 import InputPhone from '../../components/InputPhone'
-import { isValidPhoneNumber } from 'react-phone-number-input/max'
 import Button from '../../components/Button'
 import FormErrorMessage from '../../components/FormErrorMessage'
+import { AppState } from '../../types/state'
+import { FieldType } from '../../types/register'
 import { Container, Title } from './styles'
 
-const RegisterPhone = () => {
-  const [phone, setPhone] = useState<string>('')
-  const [error, setError] = useState<boolean>(false)
-  const [checked, setChecked] = useState<boolean>(false)
+interface IProps {
+  phone: string
+  errors: string[],
+  checked: string[],
+  registerStatus: boolean,
+  register: () => void,
+  changeField: (field: FieldType) => void
+}
 
-  const handle = (value: string) => {
-    setPhone(value)
-    setError(false)
-    setChecked(isValidPhoneNumber(value))
-  }
+const enhance = connect(
+  (state: AppState) => ({
+    phone: state.register.phone,
+    errors: state.register.errors,
+    checked: state.register.checked,
+    registerStatus: state.register.registerStatus
+  }),
+  { register, changeField }
+)
 
-  const submit = () => {
-    const error = []
-  
-    if (!isValidPhoneNumber(phone)) error.push('isValidPhoneNumber')
-
-    if (error.length) {
-      setError(true)
-    } else {
-      setChecked(true)
-      setError(false)
-    }
-  }
+const RegisterPhone = (props: IProps) => {
+  const { errors, checked, phone, register, changeField, registerStatus } = props
+  const disabled = (): boolean => registerStatus ? registerStatus : !checked.includes('phone')
+  const handle = (key: string) => (value: string) => changeField({ key, value })
 
   return (
     <Container>
-      {error && <FormErrorMessage>Неправильно введен формат номера телефона</FormErrorMessage>}
+      {errors.includes('phone') && <FormErrorMessage>Неправильно введен формат номера телефона</FormErrorMessage>}
       <Title>Для завершения регистрации, пожалуйста, укажите номер телефона</Title>
       <InputPhone
         placeholder='Номер'
         country='RU'
-        error={error}
-        checked={checked}
-        handle={handle}
+        error={errors.includes('phone')}
+        checked={checked.includes('phone')}
+        handle={handle('phone')}
         value={phone}
+        autoFocus
       />
-      <Button onClick={submit}>Продолжить</Button>
+      <Button disabled={disabled()} onClick={register}>Продолжить</Button>
     </Container>
   )
 }
 
-export default RegisterPhone
+export default enhance(RegisterPhone)

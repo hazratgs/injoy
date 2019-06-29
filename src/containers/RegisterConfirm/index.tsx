@@ -1,40 +1,57 @@
 import React, { useState, useEffect } from 'react'
+import { connect } from 'react-redux'
+import { changeField, confirmCode, register } from '../../actions/register'
+import { conformToMask } from 'react-text-mask'
 import Input from '../../components/Input'
 import Button from '../../components/Button'
 import FormErrorMessage from '../../components/FormErrorMessage'
 import secondsToTime from '../../utils/secondsToTime'
 import { Container, Description } from './styles'
+import { AppState } from '../../types/state'
+import { FieldType } from '../../types/register'
 
-const RegisterConfirm = () => {
+interface IProps {
+  code: string
+  checked: string[]
+  errors: string[]
+  changeField: (field: FieldType) => void,
+  confirmCode: () => void,
+  register: () => void
+}
+
+const enhance = connect(
+  (state: AppState) => ({
+    code: state.register.code,
+    errors: state.register.errors,
+    checked: state.register.checked
+  }),
+  { changeField, confirmCode, register }
+)
+
+const RegisterConfirm = (props: IProps) => {
+  const { code, errors, checked, changeField, confirmCode, register } = props
+  const pattern: RegExp[] = [/[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/]
+
+  const confirm = conformToMask(code, pattern, { guide: false })
+  const disabled: boolean = confirm.conformedValue.length < 5
+
   const [refreshTimeout, setRefreshTimeout] = useState<number>(0)
-  const timeout: number = 30
+  const timeout: number = 300
 
-  const [code, setCode] = useState<string>()
   const [resend, setResend] = useState<boolean>(false)
-  const [disabled, setDisabled] = useState<boolean>(true)
-  const [checked, setChecked] = useState<boolean>(false)
-  const [error, setError] = useState<boolean>(false)
   const [time, setTime] = useState<number>(timeout)
 
-  const handle = (value: string): void => {
-    setCode(value)
-    setError(false)
-    setDisabled(!(value.length >= 4))
-  }
-
-  const submit = (): void => {
-    if (code === '170515') {
-      setChecked(true)
-    } else {
-      setError(true)
-      setDisabled(true)
-    }
+  const handle = (key: string) => (value: string): void => {
+    changeField({ key, value })
   }
 
   const resendCode = (): void => {
     setResend(false)
     setTime(timeout)
     setRefreshTimeout(refreshTimeout + 1)
+
+    // resend registration data to a get new code confirmed
+    register()
   }
 
   const { minutes, seconds } = secondsToTime(time)
@@ -46,28 +63,29 @@ const RegisterConfirm = () => {
         clearInterval(timer)
         setResend(true)
       }
-      setTime(seconds--) 
+      setTime(seconds--)
     }, 1000)
   }, [refreshTimeout])
 
   return (
     <Container>
-      {error && <FormErrorMessage>Код введен неправильно</FormErrorMessage>}
+      {errors.includes('code') && <FormErrorMessage>Код введен неправильно</FormErrorMessage>}
       <Input
         placeholder='Введите код из SMS'
-        error={error}
-        checked={checked}
-        handle={handle}
+        mask={[/[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/]}
+        error={errors.includes('code')}
+        checked={checked.includes('code')}
+        handle={handle('code')}
         autoFocus={true}
-        value={'' + code}
+        value={code}
       />
       <Description>Выслать код через {minutes}:{seconds}</Description>
       {!resend ?
-        <Button onClick={submit} disabled={disabled}>Продолжить</Button> :
+        <Button onClick={confirmCode} disabled={disabled}>Продолжить</Button> :
         <Button onClick={resendCode}>Отправить еще раз</Button>
       }
     </Container>
   )
 }
 
-export default RegisterConfirm
+export default enhance(RegisterConfirm)

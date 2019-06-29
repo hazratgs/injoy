@@ -1,3 +1,13 @@
+export interface AuthType {
+  id: string,
+  name: string,
+  token: string | null
+}
+
+export interface IProfileState extends AuthType {
+
+}
+
 export interface IProfileList {
   id: number,
   title: string,

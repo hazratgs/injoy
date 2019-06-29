@@ -1,7 +1,7 @@
 export interface IInputProps {
   placeholder: string,
-  error: boolean,
-  checked: boolean,
+  error?: boolean,
+  checked?: boolean,
   value: string,
   type?: string,
   autoFocus?: boolean,
@@ -12,8 +12,8 @@ export interface IInputProps {
 
 export interface IInputStyleProps {
   full: boolean,
-  error: boolean,
-  checked: boolean
+  error?: boolean,
+  checked?: boolean
 }
 
 export interface ICheckboxProps {

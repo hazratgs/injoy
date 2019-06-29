@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router'
 import configureStore, { history } from './configureStore'
+import axios from 'axios'
 import Pages from './pages';
 import * as serviceWorker from './serviceWorker';
 
 const store = configureStore()
 
+axios.defaults.baseURL = 'https://cors-anywhere.herokuapp.com/http://116.203.134.94/api'
 const Application: React.FC = () => (
   <Provider store={store}>
     <ConnectedRouter history={history}>
