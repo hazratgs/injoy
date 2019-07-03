@@ -19,7 +19,7 @@ interface IProps {
 
 const enhance = connect(
   (state: AppState) => ({
-    phone: state.register.phone,
+    phone: state.register.mobile,
     errors: state.register.errors,
     checked: state.register.checked,
     registerStatus: state.register.registerStatus

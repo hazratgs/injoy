@@ -3,6 +3,7 @@ import { INavigationState } from './navigations'
 import { IRegisterState } from './register'
 import { IProfileState } from './profile'
 import { ICountriesState } from './countries'
+import { IAuthState } from './auth'
 
 export interface AppState {
   router: any
@@ -10,5 +11,6 @@ export interface AppState {
   navigations: INavigationState,
   register: IRegisterState,
   profile: IProfileState,
-  countries: ICountriesState
+  countries: ICountriesState,
+  auth: IAuthState
 }

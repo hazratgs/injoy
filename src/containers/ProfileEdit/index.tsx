@@ -40,7 +40,7 @@ const ProfileEdit = () => {
 
   const [errors, setErrors] = useState<string[]>([])
   const [checked, setCheck] = useState<string[]>([])
-  const [loginUsed, setLoginUsed] = useState<boolean>(false)
+  // const [loginUsed, setLoginUsed] = useState<boolean>(false)
 
   const handle = (name: string) => (value: string): void => {
     if (errors.includes(name) && value !== '' && value.length > 2) {
@@ -52,7 +52,7 @@ const ProfileEdit = () => {
     if (name === 'login') {
       const loginCheck = value !== '' && value.length > 2 ? ['login'] : []
       setCheck(loginCheck)
-      setLoginUsed(false)
+      // setLoginUsed(false)
     }
   }
 

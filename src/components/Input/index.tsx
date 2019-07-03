@@ -18,7 +18,6 @@ const Input = (props: IInputProps) => {
       <MaskedInput
         mask={props.mask}
         onChange={onChange}
-        defaultValue={props.value}
         render={(ref, _props) => (
           <InputElement
             ref={ref}
@@ -28,6 +27,8 @@ const Input = (props: IInputProps) => {
             checked={props.checked}
             autoFocus={autoFocus}
             type={props.type}
+            autoComplete='off'
+            defaultValue={props.value}
             {..._props}
           />
         )}

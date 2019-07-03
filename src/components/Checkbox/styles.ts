@@ -1,7 +1,10 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  padding: 20px 0;
+  padding: 30px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 `
 
 export const Label = styled.label`

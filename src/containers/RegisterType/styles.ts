@@ -1,12 +1,15 @@
 import styled from 'styled-components'
 
+export const Wrapper = styled.div`
+
+`
+
 export const Container = styled.div`
-  width: 458px;
-  height: 663px;
+  width: 754px;
   background-color: #fff;
   border-radius: 4px;
   box-shadow: 0 4px 40px 0 rgba(0, 0, 0, 0.05);
-  padding: 40px;
+  padding: 60px 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;

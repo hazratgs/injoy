@@ -4,22 +4,19 @@ import axios from 'axios'
 import { Action } from 'redux-act'
 import { IRegisterData, ConfirmCodeType } from '../types/register'
 import { FieldType, CheckFieldType } from '../types/field'
-import { AuthType } from '../types/profile'
+import { AuthType } from '../types/auth'
 import { isValidPhoneNumber } from 'react-phone-number-input/max'
 import { conformToMask } from 'react-text-mask'
 import * as actions from '../actions/register'
-import * as profileActions from '../actions/profile'
+import { authUserSuccess } from '../actions/auth'
 import fieldValidation from '../utils/fieldValidation'
 import { AppState } from '../types/state'
 
 const fetchRegister = (data: IRegisterData): Promise<object> =>
   axios.post('/users/register', data)
 
-const fetchCheckLogin = (login: string): Promise<object> =>
-  axios.post('/users/profile/check', { nickName: login })
-
-const fetchCheckPhone = (mobile: string): Promise<object> =>
-  axios.post('/users/profile/check', { mobile })
+const fetchCheckMobile = (mobile: string): Promise<object> =>
+  axios.post('/users/profile/check', { mobile: mobile })
 
 const fetchConfirmCode = (data: ConfirmCodeType): Promise<object> =>
   axios.post('/users/recover/confirm', data)
@@ -30,10 +27,8 @@ function* changeField(action: Action<FieldType<string>>) {
     const { key, value } = action.payload
     const errors: string[] = state.register.errors.filter(((item: string) => item !== key))
 
-    if (key === 'login') yield put(actions.checkLogin(value))
-    if (key === 'phone') yield put(actions.checkPhone(value))
+    if (key === 'mobile') yield put(actions.checkMobile(value))
     if (key === 'password') yield put(actions.checkPassword(value))
-    if (key === 'confirmPassword') yield put(actions.checkConfirmPassword(value))
     if (key === 'code') yield put(actions.checkCode(value))
 
     yield put(actions.errorsFields(errors))
@@ -54,57 +49,33 @@ function* changeCheckField(action: Action<CheckFieldType>) {
   yield put(actions.checkedField(checked))
 }
 
-function* checkLogin(action: Action<string>) {
+function* checkMobile(action: Action<string>) {
   try {
-    const login = action.payload
+    const mobile = action.payload
 
-    if (login.length < 4 || login.length > 32) throw new Error('login length')
+    if (!mobile.length) throw new Error('mobile length')
 
-    const respone = yield call(fetchCheckLogin, login)
-
-    if (!respone.data.isExist) {
-      yield put(actions.changeCheckField({ field: 'login', type: 'checked' }))
-    } else {
-      yield put(actions.changeCheckField({ field: 'login', type: 'error' }))
-    }
-
-  } catch (e) {
-    yield put(actions.changeCheckField({ field: 'login', type: 'clear' }))
-    console.log('ERROR checkLogin', e.message)
-  }
-}
-
-function* checkPhone(action: Action<string>) {
-  try {
-    const phone = action.payload
-
-    if (!phone.length) throw new Error('phone length')
-
-    if (isValidPhoneNumber(phone)) {
-      const respone = yield call(fetchCheckPhone, phone)
+    if (isValidPhoneNumber(mobile)) {
+      const respone = yield call(fetchCheckMobile, mobile)
 
       if (!respone.data.isExist) {
-        yield put(actions.changeCheckField({ field: 'phone', type: 'checked' }))
+        yield put(actions.changeCheckField({ field: 'mobile', type: 'checked' }))
       } else {
-        yield put(actions.changeCheckField({ field: 'phone', type: 'error' }))
+        yield put(actions.changeCheckField({ field: 'mobile', type: 'error' }))
       }
     } else {
-      yield put(actions.changeCheckField({ field: 'phone', type: 'error' }))
+      yield put(actions.changeCheckField({ field: 'mobile', type: 'error' }))
     }
   } catch (e) {
-    yield put(actions.changeCheckField({ field: 'phone', type: 'clear' }))
+    yield put(actions.changeCheckField({ field: 'mobile', type: 'clear' }))
     console.log('ERROR checkPhone', e.message)
   }
 }
 
 function* checkPassword(action: Action<string>) {
   try {
-    const state: AppState = yield select()
-    const regx = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/
-
+    const regx = /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/g
     const password = action.payload
-    const { confirmPassword } = state.register
-
     if (!password.length) throw new Error('length password')
 
     if (regx.test(password)) {
@@ -112,29 +83,8 @@ function* checkPassword(action: Action<string>) {
     } else {
       yield put(actions.changeCheckField({ field: 'password', type: 'error' }))
     }
-
-    yield put(actions.checkConfirmPassword(confirmPassword))
   } catch (e) {
     yield put(actions.changeCheckField({ field: 'password', type: 'clear' }))
-    console.log('ERROR checkPassword', e.message)
-  }
-}
-
-function* checkConfirmPassword(action: Action<string>) {
-  try {
-    const state: AppState = yield select()
-    const { password } = state.register
-    const confirmPassword = action.payload
-
-    if (!confirmPassword.length) throw new Error('length password')
-
-    if (password === confirmPassword) {
-      yield put(actions.changeCheckField({ field: 'confirmPassword', type: 'checked' }))
-    } else {
-      yield put(actions.changeCheckField({ field: 'confirmPassword', type: 'error' }))
-    }
-  } catch (e) {
-    yield put(actions.changeCheckField({ field: 'confirmPassword', type: 'clear' }))
     console.log('ERROR checkPassword', e.message)
   }
 }
@@ -163,8 +113,6 @@ function* verificationAccount() { // action: Action<IRegisterData>
     const {
       firstName,
       lastName,
-      password,
-      confirmPassword,
       checked
     } = state.register
 
@@ -172,7 +120,6 @@ function* verificationAccount() { // action: Action<IRegisterData>
     if (lastName.length < 2) errors.push('lastName')
     if (!checked.includes('login')) errors.push('login')
     if (!checked.includes('password')) errors.push('password')
-    if (confirmPassword !== password) errors.push('confirmPassword')
 
     if (errors.length) {
       yield put(actions.errorsFields(errors))
@@ -184,20 +131,20 @@ function* verificationAccount() { // action: Action<IRegisterData>
   }
 }
 
-function* register() { // action: Action<IRegisterData>
+function* register() {
   try {
     const state: AppState = yield select()
     const errors: string[] = []
     const {
       firstName,
       lastName,
-      login,
-      password,
-      phone
+      mobile,
+      nickName,
+      password
     } = state.register
 
-    if (!isValidPhoneNumber(phone)) {
-      errors.push('phone')
+    if (!isValidPhoneNumber(mobile)) {
+      errors.push('mobile')
     }
 
     if (errors.length) {
@@ -207,8 +154,8 @@ function* register() { // action: Action<IRegisterData>
         firstName,
         lastName,
         password,
-        nickName: login,
-        mobile: phone
+        nickName,
+        mobile
       }
 
       yield call(fetchRegister, data)
@@ -225,14 +172,14 @@ function* confirmCode() {
   try {
     const state: AppState = yield select()
     const code = state.register.code
-    const mobile = state.register.phone
+    const mobile = state.register.mobile
 
     const data: ConfirmCodeType = { mobile, code }
     const respone = yield call(fetchConfirmCode, data)
     yield put(actions.changeCheckField({ field: 'code', type: 'checked' }))
 
     const authData: AuthType = respone.data
-    yield put(profileActions.authUser(authData))
+    yield put(authUserSuccess(authData))
     yield put(push('/register/user-info'))
   } catch (e) {
     yield put(actions.changeCheckField({ field: 'code', type: 'error' }))
@@ -244,10 +191,8 @@ export default function* watcher() {
   yield takeLatest(actions.register, register)
   yield takeLatest(actions.changeField, changeField)
   yield takeLatest(actions.changeCheckField, changeCheckField)
-  yield takeLatest(actions.checkLogin, checkLogin)
-  yield takeLatest(actions.checkPhone, checkPhone)
+  yield takeLatest(actions.checkMobile, checkMobile)
   yield takeLatest(actions.checkPassword, checkPassword)
-  yield takeLatest(actions.checkConfirmPassword, checkConfirmPassword)
   yield takeLatest(actions.checkCode, checkCode)
   yield takeLatest(actions.verificationAccount, verificationAccount)
   yield takeLatest(actions.confirmCode, confirmCode)

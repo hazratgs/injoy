@@ -14,8 +14,6 @@ export const changeCheckField = createAction<CheckFieldType>('CHANGE_CHECK_FIELD
 export const errorsFields = createAction<string[]>('ERROR_FIELD_REGISTER')
 export const checkedField = createAction<string[]>('CHECKED_FIELD_REGISTER')
 
-export const checkLogin = createAction<string>('CHECK_LOGIN_REGISTER')
-export const checkPhone = createAction<string>('CHECK_PHONE_REGISTER')
+export const checkMobile = createAction<string>('CHECK_MOBILE_REGISTER')
 export const checkPassword = createAction<string>('CHECK_PASSWORD_REGISTER')
-export const checkConfirmPassword = createAction<string>('CHECK_CONFIRM_PASSWORD_REGISTER')
 export const checkCode = createAction<string>('CHECK_CODE_REGISTER')

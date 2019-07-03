@@ -6,10 +6,10 @@ import { IResponseCountry } from '../types/countries'
 const apiKey: string = '2umYfeM9MQD3RqrE8qjOD1bCx8KIbae8'
 
 const fetchCountries = () =>
-  axios.get(`http://geohelper.info/api/v1/countries?apiKey=${apiKey}&locale[lang]=ru`)
+  axios.get(`https://cors-anywhere.herokuapp.com/http://geohelper.info/api/v1/countries?apiKey=${apiKey}&locale[lang]=ru`)
 
 const fetchCities = (country: string) =>
-  axios.get(`http://geohelper.info/api/v1/cities?apiKey=${apiKey}&locale[lang]=ru&filter[country]=AZ`)
+  axios.get(`https://cors-anywhere.herokuapp.com/http://geohelper.info/api/v1/cities?apiKey=${apiKey}&locale[lang]=ru&filter[country]=AZ`)
 
 function* getCountries() {
   try {
@@ -29,7 +29,6 @@ function* getCities() {
     const response = yield call(fetchCities, 'RU')
     const cities: string[] = response.data
 
-    console.log(cities)
     yield put(actions.getCitiesSuccess(cities))
   } catch (e) {
     console.log('ERROR', e)

@@ -1,10 +1,4 @@
-export interface AuthType {
-  id: string,
-  name: string,
-  token: string
-}
-
-export interface IProfileState extends AuthType {
+export interface IProfileState {
   data: IProfileData,
   checked: string[],
   errors: string[],
@@ -28,6 +22,7 @@ export interface IProfileData {
   firstName: string,
   lastName: string,
   middleName: string,
+  nickname: string,
   mobile: string,
   country: string,
   city: string,

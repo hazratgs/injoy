@@ -1,21 +1,26 @@
 import { createReducer } from 'redux-act'
-import * as actions from '../actions/register'
-import { IRegisterState } from '../types/register'
+import * as actions from '../actions/auth'
+import isAuth from '../utils/isAuth'
+import { IAuthState, AuthType } from '../types/auth'
 import { FieldType } from '../types/field'
 
-const initialState: IRegisterState = {
-  firstName: '',
-  lastName: '',
-  nickName: '',
-  password: '',
+const initialState: IAuthState = {
+  auth: isAuth(),
+  id: '',
+  name: '',
+  token: '',
   mobile: '',
-  code: '',
+  password: '',
   errors: [],
-  checked: [],
-  registerStatus: false
+  checked: []
 }
 
 const reducer = createReducer<typeof initialState>({}, initialState)
+
+reducer.on(actions.authUserSuccess, (state, payload: AuthType) => ({
+  ...state,
+  ...payload
+}))
 
 reducer.on(actions.changeField, (state, payload: FieldType<string>) => ({
   ...state,
@@ -30,21 +35,6 @@ reducer.on(actions.checkedField, (state, payload) => ({
 reducer.on(actions.errorsFields, (state, payload: string[]) => ({
   ...state,
   errors: payload
-}))
-
-reducer.on(actions.register, (state) => ({
-  ...state,
-  registerStatus: true
-}))
-
-reducer.on(actions.registerSuccess, (state) => ({
-  ...state,
-  registerStatus: false
-}))
-
-reducer.on(actions.registerFailed, (state) => ({
-  ...state,
-  registerStatus: false
 }))
 
 export default reducer

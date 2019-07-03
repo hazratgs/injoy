@@ -5,6 +5,7 @@ import navigations from './navigations'
 import register from './register'
 import profile from './profile'
 import countries from './counties'
+import auth from './auth'
 import { AppState } from '../types/state'
 
 export default (history: any) => combineReducers<AppState>({
@@ -13,5 +14,6 @@ export default (history: any) => combineReducers<AppState>({
   navigations,
   register,
   profile,
-  countries
+  countries,
+  auth
 })

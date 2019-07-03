@@ -1,17 +1,15 @@
 import { createReducer } from 'redux-act'
 import * as actions from '../actions/profile'
-import { IProfileState, AuthType, IProfileData } from '../types/profile'
+import { IProfileState, IProfileData } from '../types/profile'
 import { FieldType } from '../types/field'
 
 const initialState: IProfileState = {
-  id: '',
-  name: '',
-  token: '',
   data: {
     id: '',
     firstName: '',
     lastName: '',
     middleName: '',
+    nickname: '',
     mobile: '',
     country: 'Россия',
     city: 'Москва',
@@ -33,11 +31,6 @@ const initialState: IProfileState = {
 }
 
 const reducer = createReducer<typeof initialState>({}, initialState)
-
-reducer.on(actions.authUser, (state, payload: AuthType) => ({
-  ...state,
-  ...payload
-}))
 
 reducer.on(actions.getProfileSuccess, (state, payload: IProfileData) => ({
   ...state,

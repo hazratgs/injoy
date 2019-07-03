@@ -24,9 +24,8 @@ const enhance = connect(
   (state: AppState) => ({
     firstName: state.register.firstName,
     lastName: state.register.lastName,
-    login: state.register.login,
+    mobile: state.register.mobile,
     password: state.register.password,
-    confirmPassword: state.register.confirmPassword,
     errors: state.register.errors,
     checked: state.register.checked
   }),

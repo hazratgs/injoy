@@ -1,7 +1,17 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const Title = styled.p`
+  font-size: 13px;
+  margin-bottom: 40px;
+  text-align: center;
+  line-height: 20px;
+`
+
+export const Wrapper = styled.div`
   width: 458px;
+`
+
+export const Container = styled.div`
   height: 320px;
   background-color: #fff;
   border-radius: 4px;

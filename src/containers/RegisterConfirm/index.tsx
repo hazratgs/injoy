@@ -5,12 +5,14 @@ import { conformToMask } from 'react-text-mask'
 import Input from '../../components/Input'
 import Button from '../../components/Button'
 import FormErrorMessage from '../../components/FormErrorMessage'
+import RegisterHeader from '../../components/RegisterHeader'
 import secondsToTime from '../../utils/secondsToTime'
-import { Container, Description } from './styles'
+import { Wrapper, Container, Description, Title } from './styles'
 import { AppState } from '../../types/state'
 import { FieldType } from '../../types/field'
 
 interface IProps {
+  mobile: string
   code: string
   checked: string[]
   errors: string[]
@@ -21,6 +23,7 @@ interface IProps {
 
 const enhance = connect(
   (state: AppState) => ({
+    mobile: state.register.mobile,
     code: state.register.code,
     errors: state.register.errors,
     checked: state.register.checked
@@ -29,8 +32,9 @@ const enhance = connect(
 )
 
 const RegisterConfirm = (props: IProps) => {
-  const { code, errors, checked, changeField, confirmCode, register } = props
+  const { mobile, code, errors, checked, changeField, confirmCode, register } = props
   const pattern: RegExp[] = [/[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/]
+  const phone = mobile.substr(0, 12) + ' ** ' + mobile.substr(-2 + mobile.length)
 
   const confirm = conformToMask(code, pattern, { guide: false })
   const disabled: boolean = confirm.conformedValue.length < 5
@@ -68,23 +72,27 @@ const RegisterConfirm = (props: IProps) => {
   }, [refreshTimeout])
 
   return (
-    <Container>
-      {errors.includes('code') && <FormErrorMessage>Код введен неправильно</FormErrorMessage>}
-      <Input
-        placeholder='Введите код из SMS'
-        mask={[/[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/]}
-        error={errors.includes('code')}
-        checked={checked.includes('code')}
-        handle={handle('code')}
-        autoFocus={true}
-        value={code}
-      />
-      <Description>Выслать код через {minutes}:{seconds}</Description>
-      {!resend ?
-        <Button onClick={confirmCode} disabled={disabled}>Продолжить</Button> :
-        <Button onClick={resendCode}>Отправить еще раз</Button>
-      }
-    </Container>
+    <Wrapper>
+      <RegisterHeader back='/' step={2} />
+      <Container>
+        {errors.includes('code') && <FormErrorMessage>Код введен неправильно</FormErrorMessage>}
+        <Title>На номер <b>{phone}</b> было выслано SMS<br />с кодом подтверждения</Title>
+        <Input
+          placeholder='Введите код из SMS'
+          mask={[/[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/]}
+          error={errors.includes('code')}
+          checked={checked.includes('code')}
+          handle={handle('code')}
+          autoFocus={true}
+          value={code}
+        />
+        <Description>Выслать код через {minutes}:{seconds}</Description>
+        {!resend ?
+          <Button onClick={confirmCode} disabled={disabled}>Продолжить</Button> :
+          <Button onClick={resendCode}>Отправить еще раз</Button>
+        }
+      </Container>
+    </Wrapper>
   )
 }
 

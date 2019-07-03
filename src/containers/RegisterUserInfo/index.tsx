@@ -9,9 +9,14 @@ import { changeProfileField } from '../../actions/profile'
 import { IProfileData } from '../../types/profile'
 import { FieldType } from '../../types/field'
 import { AppState } from '../../types/state'
-import { Container, Title } from './styles'
+import { Wrapper, Container, Group, Form, Title } from './styles'
+import dateOfBrith from '../../utils/dateOfBrith'
+import RegisterHeader from '../../components/RegisterHeader'
 
 interface IProps {
+  firstName: string,
+  lastName: string,
+  nickName: string,
   profile: IProfileData,
   checked: string[],
   errors: string[],
@@ -23,6 +28,9 @@ interface IProps {
 
 const enhance = connect(
   (state: AppState) => ({
+    firstName: state.register.firstName,
+    lastName: state.register.lastName,
+    nickName: state.register.nickName,
     profile: state.profile.data,
     checked: state.profile.checked,
     errors: state.profile.errors,
@@ -34,50 +42,81 @@ const enhance = connect(
 
 const RegisterUserInfo = (props: IProps) => {
   const { profile, errors, checked, countries, cities, changeProfileField, push } = props
+  const dateOfBirth = dateOfBrith(profile.dateOfBirth)
 
   const handle = (key: string) => (value: string): void => {
+    if (key === 'dateOfBirth') value = dateOfBrith(value)
     changeProfileField({ key, value })
   }
 
   return (
-    <Container>
-      {errors.length ?
-        <FormErrorMessage>Пожалуста, заполните все обязательные поля</FormErrorMessage> :
-        null
-      }
-      <Title>Укажите ваш город и возраст</Title>
-      <Select
-        placeholder='Страна'
-        error={errors.includes('country')}
-        checked={checked.includes('country')}
-        value={profile.country}
-        options={countries}
-        handle={handle('country')}
-      />
-      <Select
-        placeholder='Город'
-        error={errors.includes('city')}
-        checked={checked.includes('city')}
-        value={profile.city}
-        options={cities}
-        handle={handle('city')}
-      />
-      <Input
-        placeholder='День рождения'
-        error={errors.includes('dateOfBirth')}
-        checked={checked.includes('dateOfBirth')}
-        handle={handle('dateOfBirth')}
-        value={profile.dateOfBirth}
-        mask={[/[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/]}
-        icon='/images/register/input-date.svg'
-      />
-      <Button
-        disabled={!checked.includes('dateOfBirth')}
-        onClick={() => push('/register/type')}
-      >
-        Продолжить
+    <Wrapper>
+      <RegisterHeader back='/' step={3} />
+      <Container>
+        {errors.length ?
+          <FormErrorMessage>Пожалуста, заполните все обязательные поля</FormErrorMessage> :
+          null
+        }
+        <Title>Введите данные</Title>
+        <Form>
+          <Group>
+            <Input
+              placeholder={'Имя'}
+              error={errors.includes('firstName')}
+              handle={handle('firstName')}
+              value={props.firstName}
+            />
+            <Input
+              placeholder={'Фамилия'}
+              error={errors.includes('lastName')}
+              handle={handle('lastName')}
+              value={props.lastName}
+            />
+            <Input
+              placeholder={'Nickname'}
+              error={errors.includes('nickName')}
+              checked={checked.includes('nickName')}
+              handle={handle('nickName')}
+              value={props.nickName}
+            />
+          </Group>
+          <Group>
+            <Select
+              placeholder='Страна'
+              error={errors.includes('country')}
+              checked={checked.includes('country')}
+              value={profile.country}
+              options={countries}
+              handle={handle('country')}
+            />
+            <Select
+              placeholder='Город'
+              error={errors.includes('city')}
+              checked={checked.includes('city')}
+              value={profile.city}
+              options={cities}
+              handle={handle('city')}
+            />
+            <Input
+              placeholder='День рождения'
+              error={errors.includes('dateOfBirth')}
+              checked={checked.includes('dateOfBirth')}
+              handle={handle('dateOfBirth')}
+              value={dateOfBirth}
+              mask={[/[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/]}
+              icon='/images/register/input-date.svg'
+            />
+          </Group>
+
+        </Form>
+        <Button
+          disabled={!checked.includes('dateOfBirth')}
+          onClick={() => push('/register/type')}
+        >
+          Продолжить
       </Button>
-    </Container>
+      </Container>
+    </Wrapper>
   )
 }
 

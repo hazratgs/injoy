@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   width: 916px;
-  height: 589px;
+  /* height: 589px; */
   display: flex;
   background-color: #fff;
   border-radius: 4px;
@@ -111,19 +111,17 @@ export const Content = styled.div`
   flex-direction: column;
   display: flex;
   align-content: center;
-  justify-content: center;
+  /* justify-content: center; */
   text-align: center;
+  position: relative;
+  padding-top: 90px;
 
   @media (max-width: 768px) {
     background-color: #fff;
     margin: 0 15px;
     padding: 30px 0;
+    justify-content: center;
   }
-`
-
-export const Title = styled.h3`
-  font-size: 20px;
-  margin: 0;
 `
 
 export const Description = styled.p`
@@ -131,6 +129,7 @@ export const Description = styled.p`
 `
 
 export const Buttons = styled.div`
+  padding-top: 50px;
 
 `
 

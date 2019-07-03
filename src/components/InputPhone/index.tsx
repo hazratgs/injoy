@@ -24,6 +24,7 @@ const InputPhone = (props: IProps) => {
           country={props.country}
           onChange={onChange}
           autoFocus
+          autoComplete='off'
         />
       </InputElement>
       <Placeholder>{props.placeholder}</Placeholder>
