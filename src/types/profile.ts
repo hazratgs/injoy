@@ -24,7 +24,7 @@ export interface IProfileData {
   firstName: string,
   lastName: string,
   middleName: string,
-  nickname: string,
+  nickName: string,
   mobile: string,
   country: string,
   city: string,

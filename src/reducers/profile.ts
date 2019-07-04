@@ -9,7 +9,7 @@ const initialState: IProfileState = {
     firstName: '',
     lastName: '',
     middleName: '',
-    nickname: '',
+    nickName: '',
     mobile: '',
     country: 'Россия',
     city: 'Москва',

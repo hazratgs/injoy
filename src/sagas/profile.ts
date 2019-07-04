@@ -85,7 +85,20 @@ function* checkNickName(action: Action<string>) {
 function* getProfile() {
   try {
     const response = yield call(fethProfile)
-    const profile: IProfileData = response.data
+    const data = response.data
+
+    const profile: IProfileData = {
+      id: data.id,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      middleName: data.middleName ? data.middleName : '',
+      nickName: data.nickName ? data.nickName : '',
+      mobile: data.mobile,
+      country: data.country ? data.country : '',
+      city: data.city ? data.city : '',
+      dateOfBirth: data.dateOfBirth ? data.dateOfBirth : '',
+      roles: data.roles
+    }
 
     yield put(actions.getProfileSuccess(profile))
   } catch (e) {

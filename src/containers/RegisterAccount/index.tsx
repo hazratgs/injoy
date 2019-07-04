@@ -42,7 +42,7 @@ const RegisterAccount = (props: IProps) => {
   return (
     <Container>
       {errors.includes('login') && (
-        <FormErrorMessage>Этот nickname уже занят другим пользователем</FormErrorMessage>
+        <FormErrorMessage>Этот nickName уже занят другим пользователем</FormErrorMessage>
       )}
       <Title>Введите данные</Title>
       <Input

@@ -14,9 +14,6 @@ import dateOfBrith from '../../utils/dateOfBrith'
 import RegisterHeader from '../../components/RegisterHeader'
 
 interface IProps {
-  firstName: string,
-  lastName: string,
-  nickName: string,
   profile: IProfileData,
   checked: string[],
   errors: string[],
@@ -28,9 +25,6 @@ interface IProps {
 
 const enhance = connect(
   (state: AppState) => ({
-    firstName: state.register.firstName,
-    lastName: state.register.lastName,
-    nickName: state.register.nickName,
     profile: state.profile.data,
     checked: state.profile.checked,
     errors: state.profile.errors,
@@ -71,20 +65,20 @@ const RegisterUserInfo = (props: IProps) => {
               placeholder={'Имя'}
               error={errors.includes('firstName')}
               handle={handle('firstName')}
-              value={props.firstName}
+              value={profile.firstName}
             />
             <Input
               placeholder={'Фамилия'}
               error={errors.includes('lastName')}
               handle={handle('lastName')}
-              value={props.lastName}
+              value={profile.lastName}
             />
             <Input
               placeholder={'Nickname'}
               error={errors.includes('nickName')}
               checked={checked.includes('nickName')}
               handle={handle('nickName')}
-              value={props.nickName}
+              value={profile.nickName}
             />
           </Group>
           <Group>
