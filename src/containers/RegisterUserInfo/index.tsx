@@ -50,10 +50,10 @@ const RegisterUserInfo = (props: IProps) => {
   }
 
   const disabled = () => {
-    if (!checked.includes('dateOfBirth')) return false
-    if (!checked.includes('nickName')) return false
+    if (!checked.includes('dateOfBirth')) return true
+    if (!checked.includes('nickName')) return true
 
-    return true
+    return false
   }
 
   return (

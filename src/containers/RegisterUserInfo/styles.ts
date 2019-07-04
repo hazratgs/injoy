@@ -19,7 +19,8 @@ export const Container = styled.div`
     position: static;
     width: calc(100% - 30px);
     margin: auto;
-    height: 410px;
+    height: auto;
+    padding: 20px 0;
   }
 `
 
@@ -33,6 +34,11 @@ export const Form = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 0 78px;
+
+  @media (max-width: 768px) {
+    padding: 0;
+    justify-content: center;
+  }
 `
 
 export const Group = styled.div`
@@ -42,5 +48,9 @@ export const Group = styled.div`
 
   &:last-child {
     padding-left: 15px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0!important;
   }
 `

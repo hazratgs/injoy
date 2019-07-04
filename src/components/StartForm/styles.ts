@@ -18,6 +18,11 @@ export const RegisterLink = styled.div`
       opacity: 0.7;
     }
   }
+
+  @media (max-width: 768px) {
+    position: relative;
+    padding: 10px 0 20px;
+  }
 `
 
 export const FormWrapper = styled.div`

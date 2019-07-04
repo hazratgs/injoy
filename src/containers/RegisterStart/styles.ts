@@ -119,7 +119,7 @@ export const Content = styled.div`
   @media (max-width: 768px) {
     background-color: #fff;
     margin: 0 15px;
-    padding: 30px 0;
+    padding: 20px 0 20px;
     justify-content: center;
   }
 `

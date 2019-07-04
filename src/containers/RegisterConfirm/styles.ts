@@ -9,6 +9,10 @@ export const Title = styled.p`
 
 export const Wrapper = styled.div`
   width: 458px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 export const Container = styled.div`

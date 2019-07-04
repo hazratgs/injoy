@@ -11,6 +11,10 @@ export const Container = styled.div`
   padding-bottom: 20px;
   position: relative;
   padding: 0 20px 20px;
+
+  @media (max-width: 768px) {
+    padding: 0 20px 20px;
+  }
 `
 
 export const Button = styled(Link)`
