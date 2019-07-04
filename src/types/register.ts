@@ -9,7 +9,8 @@ export interface IRegisterState {
   code: string,
   errors: string[],
   checked: string[],
-  registerStatus: boolean
+  registerStatus: boolean,
+  newUser: boolean
 }
 
 export interface IRegisterData {

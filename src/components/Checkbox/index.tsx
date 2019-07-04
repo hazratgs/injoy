@@ -1,5 +1,5 @@
 import React from 'react'
-import { ICheckboxProps } from '../../types/inputs'
+import { ICheckboxProps, LabelItem } from '../../types/inputs'
 import { Container, Label, Input, Text } from './styles'
 
 const Checkbox = (props: ICheckboxProps) => {
@@ -8,17 +8,17 @@ const Checkbox = (props: ICheckboxProps) => {
     props.handle(value)
   }
 
-  const items = props.items.map(item => {
+  const items = props.items.map((item: LabelItem) => {
     return (
-      <Label key={item}>
+      <Label key={item.key}>
         <input
           type='checkbox'
           onClick={handle}
-          value={item}
-          defaultChecked={props.checked.includes(item)}
+          value={item.label}
+          defaultChecked={props.checked.includes(item.label)}
         />
         <Input />
-        <Text>{item}</Text>
+        <Text>{item.key}</Text>
       </Label>
     )
   })

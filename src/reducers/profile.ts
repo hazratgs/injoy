@@ -18,15 +18,15 @@ const initialState: IProfileState = {
   },
   checked: [],
   errors: [],
-  types: [
-    'Преподователь',
-    'Школьник',
-    'Студент',
-    'Родитель школьника',
-    'Автор курсов',
-    'Представитель образовательного учреждения',
-    'Инвестор',
-    'Другое'
+  roles: [
+    { key: 'Преподователь', label: 'Teacher' },
+    { key: 'Школьник', label: 'SchoolBoy' },
+    { key: 'Студент', label: 'Student' },
+    { key: 'Родитель школьника', label: 'Parent' },
+    { key: 'Автор курсов', label: 'CourseAuthor' },
+    { key: 'Представитель образовательного учреждения', label: 'TeachingStaff' },
+    { key: 'Инвестор', label: 'Investor' },
+    { key: 'Другое', label: 'Other' }
   ]
 }
 
@@ -34,7 +34,9 @@ const reducer = createReducer<typeof initialState>({}, initialState)
 
 reducer.on(actions.getProfileSuccess, (state, payload: IProfileData) => ({
   ...state,
-  ...payload
+  data: {
+    ...payload
+  }
 }))
 
 reducer.on(actions.checkedField, (state, payload) => ({

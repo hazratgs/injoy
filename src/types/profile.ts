@@ -1,8 +1,10 @@
+import { LabelItem } from './inputs'
+
 export interface IProfileState {
   data: IProfileData,
   checked: string[],
   errors: string[],
-  types: string[]
+  roles: LabelItem[]
 }
 
 export interface IProfileList {

@@ -34,8 +34,7 @@ const enhance = connect(
 const RegisterConfirm = (props: IProps) => {
   const { mobile, code, errors, checked, changeField, confirmCode, register } = props
   const pattern: RegExp[] = [/[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/]
-  const phone = mobile.substr(0, 12) + ' ** ' + mobile.substr(-2 + mobile.length)
-
+  const phone = mobile.substr(0, 8) + ' ** ' + mobile.substr(-2 + mobile.length)
   const confirm = conformToMask(code, pattern, { guide: false })
   const disabled: boolean = confirm.conformedValue.length < 5
 

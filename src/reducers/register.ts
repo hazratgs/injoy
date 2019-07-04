@@ -12,7 +12,8 @@ const initialState: IRegisterState = {
   code: '',
   errors: [],
   checked: [],
-  registerStatus: false
+  registerStatus: false,
+  newUser: false
 }
 
 const reducer = createReducer<typeof initialState>({}, initialState)
@@ -45,6 +46,11 @@ reducer.on(actions.registerSuccess, (state) => ({
 reducer.on(actions.registerFailed, (state) => ({
   ...state,
   registerStatus: false
+}))
+
+reducer.on(actions.newUser, (state, payload) => ({
+  ...state,
+  newUser: payload
 }))
 
 export default reducer

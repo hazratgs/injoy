@@ -5,7 +5,7 @@ import RegisterStart from '../../containers/RegisterStart'
 // import RegisterPhone from '../../containers/RegisterPhone'
 import RegisterConfirm from '../../containers/RegisterConfirm'
 import RegisterUserInfo from '../../containers/RegisterUserInfo'
-import RegisterType from '../../containers/RegisterType'
+import RegisterRoles from '../../containers/RegisterRoles'
 import {
   Container,
   Logo,
@@ -27,7 +27,7 @@ const Register = () => (
         {/* <Route path='/register/phone' component={RegisterPhone} exact /> */}
         <Route path='/register/phone/confirm' component={RegisterConfirm} exact />
         <Route path='/register/user-info' component={RegisterUserInfo} exact />
-        <Route path='/register/type' component={RegisterType} exact />
+        <Route path='/register/roles' component={RegisterRoles} exact />
       </Switch>
       <Footer>
         <Copyright>© 2019 injoy.org Все права защищены.</Copyright>

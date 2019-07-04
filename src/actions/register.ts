@@ -17,3 +17,5 @@ export const checkedField = createAction<string[]>('CHECKED_FIELD_REGISTER')
 export const checkMobile = createAction<string>('CHECK_MOBILE_REGISTER')
 export const checkPassword = createAction<string>('CHECK_PASSWORD_REGISTER')
 export const checkCode = createAction<string>('CHECK_CODE_REGISTER')
+
+export const newUser = createAction<boolean>('SET_NEW_REGISTER_USER')

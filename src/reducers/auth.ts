@@ -19,7 +19,8 @@ const reducer = createReducer<typeof initialState>({}, initialState)
 
 reducer.on(actions.authUserSuccess, (state, payload: AuthType) => ({
   ...state,
-  ...payload
+  ...payload,
+  auth: true
 }))
 
 reducer.on(actions.changeField, (state, payload: FieldType<string>) => ({

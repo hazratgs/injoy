@@ -180,6 +180,8 @@ function* confirmCode() {
 
     const authData: AuthType = respone.data
     yield put(authUserSuccess(authData))
+    yield put(actions.newUser(true))
+
     yield put(push('/register/user-info'))
   } catch (e) {
     yield put(actions.changeCheckField({ field: 'code', type: 'error' }))

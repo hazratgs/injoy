@@ -49,6 +49,13 @@ const RegisterUserInfo = (props: IProps) => {
     changeProfileField({ key, value })
   }
 
+  const disabled = () => {
+    if (!checked.includes('dateOfBirth')) return false
+    if (!checked.includes('nickName')) return false
+
+    return true
+  }
+
   return (
     <Wrapper>
       <RegisterHeader back='/' step={3} />
@@ -110,8 +117,8 @@ const RegisterUserInfo = (props: IProps) => {
 
         </Form>
         <Button
-          disabled={!checked.includes('dateOfBirth')}
-          onClick={() => push('/register/type')}
+          disabled={disabled()}
+          onClick={() => push('/register/roles')}
         >
           Продолжить
       </Button>

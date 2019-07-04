@@ -8,6 +8,7 @@ export const Container = styled.div`
   &:after {
     width: 100vw;
     height: 50%;
+    min-height: 390px;
     position: absolute;
     top: 0;
     left: 0;

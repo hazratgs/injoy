@@ -7,10 +7,11 @@ import Checkbox from '../../components/Checkbox'
 import Button from '../../components/Button'
 import { AppState } from '../../types/state'
 import { FieldType } from '../../types/field'
+import { LabelItem } from '../../types/inputs'
 import { Wrapper, Container, Title } from './styles'
 
 interface IProps extends RouteComponentProps {
-  types: string[],
+  labels: LabelItem[],
   roles: string[],
   changeProfileField: (field: FieldType<string[]>) => void,
   updateProfile: () => void
@@ -18,15 +19,15 @@ interface IProps extends RouteComponentProps {
 
 const enhance = connect(
   (state: AppState) => ({
-    types: state.profile.types,
+    labels: state.profile.roles,
     roles: state.profile.data.roles
   }),
   { changeProfileField, updateProfile }
 )
 
-const RegisterType = (props: IProps) => {
-  const { types, roles, changeProfileField, updateProfile } = props
-
+const RegisterRoles = (props: IProps) => {
+  const { labels, roles, changeProfileField, updateProfile } = props
+  console.log(roles)
   const handle = (key: string) => (value: string): void => {
     changeProfileField({
       key,
@@ -47,7 +48,7 @@ const RegisterType = (props: IProps) => {
       <Container>
         <Title>В качестве кого вы регистрируетесь?</Title>
         <Checkbox
-          items={types}
+          items={labels}
           checked={roles}
           handle={handle('roles')}
         />
@@ -57,4 +58,4 @@ const RegisterType = (props: IProps) => {
   )
 }
 
-export default withRouter(enhance(RegisterType))
+export default withRouter(enhance(RegisterRoles))

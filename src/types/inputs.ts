@@ -17,7 +17,12 @@ export interface IInputStyleProps {
 }
 
 export interface ICheckboxProps {
-  items: string[],
+  items: LabelItem[],
   checked: string[],
   handle: (value: string) => void
+}
+
+export type LabelItem = {
+  key: string,
+  label: string
 }
