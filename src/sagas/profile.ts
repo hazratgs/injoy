@@ -1,6 +1,7 @@
 import { takeLatest, select, put, call } from 'redux-saga/effects'
 import { Action } from 'redux-act'
 import * as actions from '../actions/profile'
+import { logoutUser } from '../actions/auth'
 import axios from 'axios'
 import { IProfileData } from '../types/profile'
 import { AppState } from '../types/state'
@@ -103,6 +104,7 @@ function* getProfile() {
     yield put(actions.getProfileSuccess(profile))
   } catch (e) {
     if (e.response && e.response.status === 401) {
+      yield put(logoutUser())
       console.log('LOGOUT')
     }
   }

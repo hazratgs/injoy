@@ -9,6 +9,7 @@ import { AppState } from '../types/state'
 import { CheckFieldType, FieldType } from '../types/field'
 import fieldValidation from '../utils/fieldValidation'
 import { isValidPhoneNumber } from 'react-phone-number-input/max'
+import { push } from 'connected-react-router'
 
 const fetchLogin = (data: LoginType): Promise<object> => axios.post('/users/login', data)
 
@@ -91,6 +92,7 @@ function* logoutUser() {
     window.localStorage.removeItem('token')
     axios.defaults.headers = {'Authorization': ''}
     yield put(clearProfile())
+    yield put(push('/'))
   } catch (e) {
     console.log('ERROR logoutUser', e.message)
   }
