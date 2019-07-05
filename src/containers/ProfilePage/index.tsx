@@ -1,11 +1,13 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import ButtonOutline from '../../components/ButtonOutline'
 import ProfileCard from '../../components/ProfileCard'
 import ProfileProgress from '../../components/ProfileProgress'
 import ProfileList from '../../components/ProfileList'
 import ProfileEducation from '../../components/ProfileEducation'
 import ProfileProject from '../../components/ProfileProject'
-import { IProfileList, IProfileEducation } from '../../types/profile'
+import { IProfileList, IProfileEducation, IProfileData } from '../../types/profile'
+import { AppState } from '../../types/state'
 import {
   Container,
   Head,
@@ -13,6 +15,16 @@ import {
   GroupTitle,
   Info
 } from './styles'
+
+interface IProps {
+  profile: IProfileData
+}
+
+const enhance = connect(
+  (state: AppState) => ({
+    profile: state.profile.data
+  })
+)
 
 const educations: IProfileList[] = [
   {
@@ -64,7 +76,7 @@ const renderEducation = (item: IProfileList) => <ProfileEducation key={item.id} 
 
 const renderProject = (item: IProfileList) => <ProfileProject key={item.id} {...item} />
 
-const ProfilePage = () => {
+const ProfilePage = (props: IProps) => {
   return (
     <Container>
       <Head>
@@ -76,7 +88,7 @@ const ProfilePage = () => {
           </>
         </ButtonOutline>
       </Head>
-      <ProfileCard />
+      <ProfileCard {...props.profile}/>
       <GroupTitle>
         Достижения
         <Info>
@@ -102,4 +114,4 @@ const ProfilePage = () => {
   )
 }
 
-export default ProfilePage
+export default enhance(ProfilePage)

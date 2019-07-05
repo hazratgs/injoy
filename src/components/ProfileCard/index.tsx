@@ -1,4 +1,5 @@
 import React from 'react'
+import { IProfileData } from '../../types/profile'
 import {
   Container,
   Image,
@@ -8,29 +9,29 @@ import {
   UserContactItem
 } from './styles'
 
-const ProfileCard = () => {
+const ProfileCard = (props: IProfileData) => {
   return (
     <Container>
       <Image>
-        <img src='/images/profile/user.png' alt='' />
+        <img src={props.avatar} alt='' />
         <Circle />
       </Image>
       <UserName>
-        <h2>Антон Куликов</h2>
-        <span><b>@</b> antonykulikov</span>
+        <h2>{props.firstName} {props.lastName}</h2>
+        <span><b>@</b> {props.nickName}</span>
       </UserName>
       <UserContact>
         <UserContactItem>
           <img src='/images/profile/phone.svg' alt='pgone' />
-          <span>+7 (963) 668-22-82</span>
+          <span>{props.mobile}</span>
         </UserContactItem>
         <UserContactItem>
           <img src='/images/profile/city.svg' alt='city' />
-          <span>Москва</span>
+          <span>{props.country}, {props.city}</span>
         </UserContactItem>
         <UserContactItem>
           <img src='/images/profile/date.svg' alt='brithDay' />
-          <span>29.10.1989</span>
+          <span>{props.dateOfBirth}</span>
         </UserContactItem>
       </UserContact>
     </Container>

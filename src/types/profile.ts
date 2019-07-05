@@ -29,5 +29,6 @@ export interface IProfileData {
   country: string,
   city: string,
   dateOfBirth: string,
-  roles: string[]
+  roles: string[],
+  avatar?: string
 }

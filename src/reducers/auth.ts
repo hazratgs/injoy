@@ -38,4 +38,9 @@ reducer.on(actions.errorsFields, (state, payload: string[]) => ({
   errors: payload
 }))
 
+reducer.on(actions.loginUser, (state) => ({
+  ...state,
+  auth: false
+}))
+
 export default reducer

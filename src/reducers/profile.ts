@@ -3,19 +3,22 @@ import * as actions from '../actions/profile'
 import { IProfileState, IProfileData } from '../types/profile'
 import { FieldType } from '../types/field'
 
+const user: IProfileData = {
+  id: '',
+  firstName: '',
+  lastName: '',
+  middleName: '',
+  nickName: '',
+  mobile: '',
+  country: 'Россия',
+  city: 'Москва',
+  dateOfBirth: '',
+  roles: [],
+  avatar: '/images/profile/user.png'
+}
+
 const initialState: IProfileState = {
-  data: {
-    id: '',
-    firstName: '',
-    lastName: '',
-    middleName: '',
-    nickName: '',
-    mobile: '',
-    country: 'Россия',
-    city: 'Москва',
-    dateOfBirth: '',
-    roles: []
-  },
+  data: user,
   checked: [],
   errors: [],
   roles: [
@@ -35,6 +38,7 @@ const reducer = createReducer<typeof initialState>({}, initialState)
 reducer.on(actions.getProfileSuccess, (state, payload: IProfileData) => ({
   ...state,
   data: {
+    ...state.data,
     ...payload
   }
 }))
@@ -55,6 +59,11 @@ reducer.on(actions.changeProfileField, (state, payload: FieldType<string | strin
     ...state.data,
     [payload.key]: payload.value
   }
+}))
+
+reducer.on(actions.clearProfile, (state) => ({
+  ...state,
+  date: user
 }))
 
 export default reducer

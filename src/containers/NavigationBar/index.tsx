@@ -8,14 +8,19 @@ import NavigationUser from '../../components/NavigationUser'
 import HeaderSearch from '../../components/HeaderSearch'
 import { Container, Wrapper } from './styles'
 import { IRouteProps, IUserProps } from '../../types/navigations'
+import { IProfileData } from '../../types/profile'
 
 interface IProps {
+  profile: IProfileData,
   visibility: boolean,
   changeVisibilityNavBar: () => void
 }
 
 const enhance = connect(
-  (state: AppState) => ({ visibility: state.navigations.visibility }),
+  (state: AppState) => ({
+    profile: state.profile.data,
+    visibility: state.navigations.visibility
+  }),
   { changeVisibilityNavBar }
 )
 
@@ -50,13 +55,6 @@ const routes: IRouteProps[] = [
   }
 ]
 
-const user: IUserProps = {
-  path: '/profile',
-  img: '/images/users/user.png',
-  name: 'Антон Куликов',
-  phone: '+7 962 948 78 87'
-}
-
 const NavigationBar = (props: IProps) => {
   const { visibility } = props
   const items = routes.map(item => (
@@ -71,7 +69,7 @@ const NavigationBar = (props: IProps) => {
     <Container visibility={visibility}>
       <Logo />
       <HeaderSearch />
-      <NavigationUser handle={props.changeVisibilityNavBar} {...user} />
+      <NavigationUser handle={props.changeVisibilityNavBar} {...props.profile} />
       <Wrapper>
         {items}
       </Wrapper>

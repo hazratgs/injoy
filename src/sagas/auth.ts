@@ -1,7 +1,7 @@
 import { takeLatest, select, put, call } from 'redux-saga/effects'
 import { Action } from 'redux-act'
 import * as actions from '../actions/auth'
-import { getProfile } from '../actions/profile'
+import { getProfile, clearProfile } from '../actions/profile'
 import axios from 'axios'
 import isAuth from '../utils/isAuth'
 import { AuthType, LoginType } from '../types/auth'
@@ -79,9 +79,20 @@ function* loginUser() {
 
     const response = yield call(fetchLogin, data)
     console.log(response)
+  
   } catch (e) {
     yield put(actions.changeCheckField({ field: 'password', type: 'error' }))
     console.log('ERROR loginUser', e.message)
+  }
+}
+
+function* logoutUser() {
+  try {
+    window.localStorage.removeItem('token')
+    axios.defaults.headers = {'Authorization': ''}
+    yield put(clearProfile())
+  } catch (e) {
+    console.log('ERROR logoutUser', e.message)
   }
 }
 
@@ -101,6 +112,7 @@ export default function* watcher() {
   yield takeLatest(actions.authUser, authUser)
   yield takeLatest(actions.authUserSuccess, authUserSuccess)
   yield takeLatest(actions.loginUser, loginUser)
+  yield takeLatest(actions.logoutUser, logoutUser)
 
   yield takeLatest(actions.changeField, changeField)
   yield takeLatest(actions.changeCheckField, changeCheckField)

@@ -1,15 +1,19 @@
 import React from 'react'
 import { Container, Link, Avatar, Wrapper, Name, Phone } from './style'
-import { IUserProps } from '../../types/navigations'
+import { IProfileData } from '../../types/profile'
 
-const NavigationUser = (props: IUserProps) => {
+interface IProps extends IProfileData {
+  handle: () => void
+}
+
+const NavigationUser = (props: IProps) => {
   return (
     <Container>
-      <Link to={props.path} onClick={props.handle}>
-        <Avatar src={props.img} alt={props.name} />
+      <Link to='/profile' onClick={props.handle}>
+        <Avatar src={props.avatar} alt={props.nickName} />
         <Wrapper>
-          <Name>{props.name}</Name>
-          <Phone>{props.phone}</Phone>
+          <Name>{props.firstName} {props.lastName}</Name>
+          <Phone>{props.mobile}</Phone>
         </Wrapper>
       </Link>
     </Container>

@@ -102,7 +102,9 @@ function* getProfile() {
 
     yield put(actions.getProfileSuccess(profile))
   } catch (e) {
-    console.log('ERROR getProfile', e.message)
+    if (e.response && e.response.status === 401) {
+      console.log('LOGOUT')
+    }
   }
 }
 
