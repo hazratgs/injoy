@@ -11,7 +11,7 @@ import fieldValidation from '../utils/fieldValidation'
 import { isValidPhoneNumber } from 'react-phone-number-input/max'
 import { push } from 'connected-react-router'
 
-const fetchLogin = (data: LoginType): Promise<object> => axios.post('/users/login', data)
+const fetchLogin = (data: LoginType): Promise<AuthType> => axios.post('/users/login', data)
 
 function* changeField(action: Action<FieldType<string>>) {
   try {
@@ -45,10 +45,21 @@ function* checkMobile(action: Action<string>) {
 
 function* authUser() {
   try {
+    const state: AppState = yield select()
+    const { pathname } = state.router.location
+
+    const redirect = () => {
+      if (pathname === '/') return false
+      if (pathname === '/auth') return false
+      if (pathname.indexOf('/register') !== -1) return false
+
+      return true
+    }
+
     if (isAuth()) {
       yield put(getProfile())
-    } else {
-      // yield put(push('/register'))
+    } else if (redirect()) {
+      yield put(push('/'))
     }
   } catch (e) {
     console.log('ERROR authUserSuccess', e)
@@ -74,13 +85,20 @@ function* loginUser() {
   try {
     const state: AppState = yield select()
     const data: LoginType = {
-      login: state.auth.mobile,
+      login: state.auth.mobile.replace('+', ''),
       password: state.auth.password
     }
 
     const response = yield call(fetchLogin, data)
-    console.log(response)
-  
+    const authData: AuthType = {
+      id: response.data.id,
+      name: response.data.name,
+      token: response.data.token
+    }
+
+    yield put(actions.authUserSuccess(authData))
+    yield put(push('/'))
+
   } catch (e) {
     yield put(actions.changeCheckField({ field: 'password', type: 'error' }))
     console.log('ERROR loginUser', e.message)
