@@ -23,6 +23,10 @@ export const Element = styled(Link)<Props>`
   border: 2px solid #2992fa;
   color: #2992fa;
 
+  img {
+    display: none;
+  }
+
   &:hover {
     box-shadow: 0 4px 4px 0 rgba(89, 185, 254, 0.2);
     background-color: #2992fa;
@@ -46,6 +50,10 @@ export const Element = styled(Link)<Props>`
       border-radius: none;
       height: 40px;
       width: 40px;
+
+      img {
+        display: block;
+      }
 
       &:hover {
         background-color: rgba(41, 146, 250, 0.21);

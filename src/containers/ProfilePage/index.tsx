@@ -6,7 +6,7 @@ import ProfileProgress from '../../components/ProfileProgress'
 import ProfileList from '../../components/ProfileList'
 import ProfileEducation from '../../components/ProfileEducation'
 import ProfileProject from '../../components/ProfileProject'
-import { IProfileList, IProfileEducation, IProfileData } from '../../types/profile'
+import { IProfileList, IProfileData } from '../../types/profile'
 import { AppState } from '../../types/state'
 import {
   Container,
@@ -17,66 +17,25 @@ import {
 } from './styles'
 
 interface IProps {
-  profile: IProfileData
+  profile: IProfileData,
+  educations: IProfileList[],
+  projects: IProfileList[]
 }
 
 const enhance = connect(
   (state: AppState) => ({
-    profile: state.profile.data
+    profile: state.profile.data,
+    educations: state.profile.educations,
+    projects: state.profile.projects
   })
 )
 
-const educations: IProfileList[] = [
-  {
-    id: 1,
-    status: true,
-    title: 'Новые подходы к обучению детей',
-    date: '12.05.2019'
-  },
-  {
-    id: 2,
-    status: true,
-    title: 'Онлайн-интенсивы для Product и Project-менеджеров',
-    date: '07.03.2018'
-  },
-  {
-    id: 3,
-    status: true,
-    title: 'Управление финансами',
-    date: '07.03.2018'
-  },
-  {
-    id: 4,
-    status: true,
-    title: 'Онлайн-интенсивы для Product и Project-менеджеров',
-    date: '07.03.2018'
-  }
-]
-
-const projects: IProfileEducation[] = [
-  {
-    id: 1,
-    title: 'Новые подходы к обучению детей'
-  },
-  {
-    id: 2,
-    title: 'Онлайн-интенсивы для Product и Project-менеджеров'
-  },
-  {
-    id: 3,
-    title: 'Управление финансами'
-  },
-  {
-    id: 4,
-    title: 'Управление финансами'
-  }
-]
-
 const renderEducation = (item: IProfileList) => <ProfileEducation key={item.id} {...item} />
-
 const renderProject = (item: IProfileList) => <ProfileProject key={item.id} {...item} />
 
 const ProfilePage = (props: IProps) => {
+  const { educations, projects } = props
+  window.console.log(projects)
   return (
     <Container>
       <Head>
@@ -102,7 +61,7 @@ const ProfilePage = (props: IProps) => {
           <img src='/images/profile/info.svg' alt='' />
         </Info>
       </GroupTitle>
-      <ProfileList<IProfileEducation> items={educations} render={renderEducation} />
+      <ProfileList<IProfileList> items={educations} render={renderEducation} />
       <GroupTitle>
         Проекты
         <Info>

@@ -24,6 +24,7 @@ export const ViewButton = styled.button`
   bottom: -30px;
   position: relative;
   display: block;
+  outline: none;
   cursor: pointer;
 
   @media (max-width: 768px) {

@@ -30,6 +30,46 @@ const initialState: IProfileState = {
     { key: 'Представитель образовательного учреждения', label: 'TeachingStaff' },
     { key: 'Инвестор', label: 'Investor' },
     { key: 'Другое', label: 'Other' }
+  ],
+  educations: [
+    {
+      id: 1,
+      title: 'Новые подходы к обучению детей',
+      date: '12.05.2019'
+    },
+    {
+      id: 2,
+      title: 'Онлайн-интенсивы для Product и Project-менеджеров',
+      date: '07.03.2018'
+    },
+    {
+      id: 3,
+      title: 'Управление финансами',
+      date: '07.03.2018'
+    },
+    {
+      id: 4,
+      title: 'Онлайн-интенсивы для Product и Project-менеджеров',
+      date: '07.03.2018'
+    }
+  ],
+  projects: [
+    {
+      id: 1,
+      title: 'Новые подходы к обучению детей'
+    },
+    {
+      id: 2,
+      title: 'Онлайн-интенсивы для Product и Project-менеджеров'
+    },
+    {
+      id: 3,
+      title: 'Управление финансами'
+    },
+    {
+      id: 4,
+      title: 'Управление финансами'
+    }
   ]
 }
 
