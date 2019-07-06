@@ -4,6 +4,7 @@ import { IRegisterState } from './register'
 import { IProfileState } from './profile'
 import { ICountriesState } from './countries'
 import { IAuthState } from './auth'
+import { ICoursesState } from './courses'
 
 export interface AppState {
   router: any
@@ -12,5 +13,6 @@ export interface AppState {
   register: IRegisterState,
   profile: IProfileState,
   countries: ICountriesState,
-  auth: IAuthState
+  auth: IAuthState,
+  courses: ICoursesState
 }

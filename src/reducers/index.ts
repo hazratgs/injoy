@@ -6,6 +6,7 @@ import register from './register'
 import profile from './profile'
 import countries from './counties'
 import auth from './auth'
+import courses from './courses'
 import { AppState } from '../types/state'
 
 export default (history: any) => combineReducers<AppState>({
@@ -15,5 +16,6 @@ export default (history: any) => combineReducers<AppState>({
   register,
   profile,
   countries,
-  auth
+  auth,
+  courses
 })

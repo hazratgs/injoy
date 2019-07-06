@@ -9,7 +9,7 @@ import { AppState } from '../types/state'
 import Register from './register'
 import Routes from './routes'
 
-interface ISectionProps extends RouteComponentProps {
+interface IPagesProps extends RouteComponentProps {
   auth: boolean,
   getCountries: () => void,
   authUser: () => void
@@ -26,8 +26,8 @@ const enhance = connect(
   { getCountries, authUser }
 )
 
-class Sections extends Component<ISectionProps, ISectionState> {
-  constructor(props: ISectionProps) {
+class Pages extends Component<IPagesProps, ISectionState> {
+  constructor(props: IPagesProps) {
     super(props)
     const { getCountries, authUser } = this.props
 
@@ -52,4 +52,4 @@ class Sections extends Component<ISectionProps, ISectionState> {
   }
 }
 
-export default withRouter(enhance(Sections))
+export default withRouter(enhance(Pages))
