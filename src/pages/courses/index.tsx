@@ -1,8 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import NewsFilter from '../../components/NewsFilter'
-import News from '../../containers/News'
-import { Container, NewsWrapper, Aside } from './styles'
+import CourseList from '../../containers/CourseList'
+import { Container, Wrapper, Aside } from './styles'
 import { INewsType } from '../../types/news'
 import { AppState } from '../../types/state'
 
@@ -20,9 +20,9 @@ interface IProps {
 
 const Main = (props: IProps) => (
   <Container>
-    <NewsWrapper>
-      <News />
-    </NewsWrapper>
+    <Wrapper>
+      <CourseList />
+    </Wrapper>
     <Aside>
       <NewsFilter items={props.types} selectedTypes={props.selectedTypes} />
     </Aside>

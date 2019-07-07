@@ -1,7 +1,8 @@
 import { createAction } from 'redux-act'
+import { ICourse } from '../types/courses'
 
 export const getCourses = createAction('GET_COURSES')
-export const getCoursesSuccess = createAction('GET_COURSES_SUCCESS')
+export const getCoursesSuccess = createAction<ICourse[]>('GET_COURSES_SUCCESS')
 export const getCoursesError = createAction('GET_COURSES_ERROR')
 
 export const getTypes = createAction('GET_TYPES')

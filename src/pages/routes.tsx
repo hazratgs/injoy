@@ -7,6 +7,7 @@ import HeaderMobile from '../containers/HeaderMobile'
 import { Wrapper, Content } from './styles'
 import { AppState } from '../types/state'
 import { getCourses } from '../actions/courses'
+import NewUserPopup from '../containers/NewsUserPopup'
 
 import Main from './main'
 import News from './news'
@@ -43,6 +44,7 @@ const Routes = (props: IProps) => {
           </Switch>
         </Content>
       </Wrapper>
+      <NewUserPopup />
     </>
   )
 }

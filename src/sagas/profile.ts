@@ -85,23 +85,25 @@ function* checkNickName(action: Action<string>) {
 
 function* getProfile() {
   try {
+    const state: AppState = yield select()
+    const profile = state.profile.data
     const response = yield call(fethProfile)
     const data = response.data
 
-    const profile: IProfileData = {
+    const update: IProfileData = {
       id: data.id,
       firstName: data.firstName,
       lastName: data.lastName,
-      middleName: data.middleName ? data.middleName : '',
-      nickName: data.nickName ? data.nickName : '',
+      middleName: data.middleName ? data.middleName : profile.middleName,
+      nickName: data.nickName ? data.nickName : profile.nickName,
       mobile: data.mobile,
-      country: data.country ? data.country : '',
-      city: data.city ? data.city : '',
-      dateOfBirth: data.dateOfBirth ? data.dateOfBirth : '',
+      country: data.country ? data.country : profile.country,
+      city: data.city ? data.city : profile.city,
+      dateOfBirth: data.dateOfBirth ? data.dateOfBirth : profile.dateOfBirth,
       roles: data.roles
     }
 
-    yield put(actions.getProfileSuccess(profile))
+    yield put(actions.getProfileSuccess(update))
   } catch (e) {
     if (e.response && e.response.status === 401) {
       yield put(logoutUser())

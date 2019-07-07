@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import { getCountries } from '../actions/countries'
 import { authUser } from '../actions/auth'
 import { Switch, Route, withRouter, RouteComponentProps } from 'react-router-dom'
-import NewUserPopup from '../containers/NewsUserPopup'
 import { AppState } from '../types/state'
 
 import Register from './register'
@@ -46,7 +45,6 @@ class Pages extends Component<IPagesProps, ISectionState> {
           <Route path='/register' component={Register} />
           <Route path='/' component={Routes} />
         </Switch>
-        <NewUserPopup />
       </>
     )
   }
