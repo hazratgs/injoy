@@ -11,7 +11,7 @@ export const Container = styled.div`
 export const Image = styled.img`
   display: block;
   width: 171px;
-  height: 206px;
+  height: 100%;
 `
 
 export const Wrapper = styled.div`
@@ -19,11 +19,12 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 30px;
+  padding: 30px;
 `
 
 export const Title = styled(Link)`
   font-size: 21px;
+  line-height: 28px;
   color: #000;
   font-weight: 600;
   text-decoration: none;
@@ -32,6 +33,7 @@ export const Title = styled(Link)`
 
 export const Description = styled.p`
   font-size: 12px;
+  line-height: 18px;
   margin: 8px 0;
 `
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import { ICourse } from '../../types/courses'
 import {
   Container,
   Image,
@@ -13,29 +14,29 @@ import {
   Rating
 } from './styles'
 
-const CourseItem = () => {
+const CourseItem = (props: ICourse) => {
+  const tags = props.tags.map((item: string) => <Tag key={item}>{item}</Tag>)
   return (
     <Container>
       <Image src='/images/courses/images.svg' alt='' />
       <Wrapper>
-        <Title to='/'>Новые подходы к обучению детей</Title>
-        <Description>Базовое и небольшое описание про что в целом курс</Description>
+        <Title to='/'>{props.description}</Title>
+        <Description>{props.name}</Description>
         <TagsWrapper>
-          <Tag>Дети</Tag>
-          <Tag>Менеджмент</Tag>
+          {tags}
         </TagsWrapper>
         <Info>
           <Author>
             <img src='/images/courses/user.svg' alt='' />
-            <span>Татьяна Долгоненко</span>
+            <span>{props.authorName}</span>
           </Author>
           <Duration>
             <img src='/images/courses/time.svg' alt='' />
-            <span>15 часов</span>
+            <span>{props.duration}</span>
           </Duration>
           <Rating>
             <img src='/images/courses/rating.svg' alt='' />
-            <span>4.9</span>
+            <span>{props.rating}</span>
           </Rating>
         </Info>
       </Wrapper>

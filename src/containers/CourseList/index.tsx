@@ -17,7 +17,7 @@ const enhance = connect(
 
 
 const CourseList = (props: IProps) => {
-  const items = props.items.map((item: ICourse) => <CourseItem />)
+  const items = props.items.map((item: ICourse) => <CourseItem {...item} />)
   return (
     <Container>
       <Title>Каталог курсов <b>32</b></Title>
