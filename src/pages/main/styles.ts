@@ -7,6 +7,10 @@ export const Container = styled.div`
 export const NewsWrapper = styled.div`
   width: 740px;
   margin-right: 30px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 export const Aside = styled.div`

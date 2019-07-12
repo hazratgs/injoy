@@ -9,6 +9,16 @@ export const Container = styled.div`
   width: 300px;
   border-radius: 8px;
   padding-bottom: 30px;
+
+  @media (max-width: 768px) {
+    position: fixed;
+    display: none;
+    width: calc(100% - 30px);
+    top: 75px;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
 `
 
 export const Title = styled.h2`

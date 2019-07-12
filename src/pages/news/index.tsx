@@ -12,7 +12,8 @@ import {
   Author,
   View,
   Image,
-  HtmlContent
+  HtmlContent,
+  Reverse
 } from './styles'
 
 const News = () => {
@@ -21,18 +22,20 @@ const News = () => {
       <Wrappper>
         <Head>
           <BackButton to='/'>
-            <img src='/images/register/left-arrow.svg' alt='back news'/>
+            <img src='/images/back.svg' alt='back news' />
           </BackButton>
           <HeadWrapper>
             <Title>За что программисты любят программирование?</Title>
-            <NewsParams>
-              <DateTime>3 апреля 2018 в 10:42,</DateTime>
-              <Author>Антон Куликов</Author>
-              <View>22 462</View>
-            </NewsParams>
           </HeadWrapper>
         </Head>
-        <Image src='https://blog.iteducenter.ua/wp-content/uploads/2017/03/richard-stollman.jpg' />
+        <Reverse>
+          <NewsParams>
+            <DateTime>3 апреля 2018 в 10:42,</DateTime>
+            <Author>Антон Куликов</Author>
+            <View>22 462</View>
+          </NewsParams>
+          <Image src='https://blog.iteducenter.ua/wp-content/uploads/2017/03/richard-stollman.jpg' />
+        </Reverse>
         <HtmlContent>
           <p>Если вы читаете нас, то, скорее всего, вам нравится программировать. И хоть само по себе программирование является и хорошим средством заработка, и достаточно интересным хобби, наличие интересов вне сферы деятельности — хорошее качество для любого человека. У разносторонних людей и жизнь интереснее, и работа лучше идет.</p>
           <p>Недавно raywenderlich.com провели опрос и узнали, чем программисты увлекаются вне своей основной деятельности.</p>

@@ -13,6 +13,11 @@ export const Container = styled(Link)`
   display: block;
   border-radius: 8px;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    width: calc(50% - 5px);
+    margin-bottom: 10px;
+  }
 `
 
 export const Image = styled.div<ImageProps>`
@@ -24,16 +29,28 @@ export const Image = styled.div<ImageProps>`
   ${props => props.src && `
     background-image: url(${props.src});
   `}
+
+  @media (max-width: 768px) {
+    height: 120px;
+  }
 `
 
 export const Content = styled.div`
   padding: 12px 16px 19px; 
+
+  @media (max-width: 768px) {
+    padding: 8px 12px 12px; 
+  }
 `
 
 export const Category = styled.span`
   font-size: 12px;
   opacity: .34;
   color: #000;
+
+  @media (max-width: 768px) {
+    font-size: 10px;
+  }
 `
 
 export const Title = styled.p`
@@ -41,4 +58,9 @@ export const Title = styled.p`
   font-weight: 600;
   color: #000;
   margin: 5px 0 0;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+    line-height: 18px;
+  }
 `

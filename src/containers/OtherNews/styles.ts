@@ -5,6 +5,10 @@ export const Container = styled.div`
   padding: 20px;
   background-color: #fff;
   border-radius: 8px;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `
 
 export const Title = styled.h2`
