@@ -13,6 +13,10 @@ export const Container = styled.div`
 
   @media (max-width: 769px) {
     display: flex;
+
+    .navbar-logo {
+      flex: 1;
+    }
   }
 `
 

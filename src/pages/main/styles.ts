@@ -10,6 +10,7 @@ export const NewsWrapper = styled.div`
 
   @media (max-width: 768px) {
     width: 100%;
+    margin-right: 0;
   }
 `
 

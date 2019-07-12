@@ -32,6 +32,7 @@ export const Container = styled.div<IProps>`
     visibility: hidden;
     transform: translateX(100%);
     transition: all .3s ease;
+    overflow-y: auto;
 
     ${props => props.visibility && `
       opacity: 1;
