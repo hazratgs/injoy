@@ -20,8 +20,8 @@ const CourseItem = (props: ICourse) => {
     <Container>
       <Image src='/images/courses/images.svg' alt='' />
       <Wrapper>
-        <Title to='/'>{props.description}</Title>
-        <Description>{props.name}</Description>
+        <Title to='/'>{props.name}</Title>
+        <Description>{props.description}</Description>
         <TagsWrapper>
           {tags}
         </TagsWrapper>
