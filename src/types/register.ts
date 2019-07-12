@@ -14,11 +14,8 @@ export interface IRegisterState {
 }
 
 export interface IRegisterData {
-  firstName: string,
-  lastName: string,
-  nickName: string,
-  password: string,
-  mobile: string
+  mobile: string,
+  password: string
 }
 
 export type ConfirmCodeType = {
