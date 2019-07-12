@@ -35,7 +35,6 @@ const renderProject = (item: IProfileList) => <ProfileProject key={item.id} {...
 
 const ProfilePage = (props: IProps) => {
   const { educations, projects } = props
-  window.console.log(projects)
   return (
     <Container>
       <Head>

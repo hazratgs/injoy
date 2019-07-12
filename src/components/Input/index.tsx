@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { IInputProps } from '../../types/inputs'
 import MaskedInput from 'react-text-mask'
 import { Container, Placeholder, InputElement, Error, Checked, Icon } from './styles'
@@ -12,6 +12,8 @@ const Input = (props: IInputProps) => {
     setFull(!!e.currentTarget.value)
     props.handle(value)
   }
+
+  useEffect(() => setFull(!!props.value))
 
   return (
     <Container>
@@ -28,7 +30,7 @@ const Input = (props: IInputProps) => {
             autoFocus={autoFocus}
             type={props.type}
             autoComplete='off'
-            defaultValue={props.value}
+            value={props.value}
             {..._props}
           />
         )}

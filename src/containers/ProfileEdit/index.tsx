@@ -1,76 +1,66 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
 import ProfileUploadAvatar from '../../components/ProfileUploadAvatar'
+import { changeProfileField, updateProfile } from '../../actions/profile'
 import Input from '../../components/Input'
 import InputPhone from '../../components/InputPhone'
 import Select from '../../components/Select'
 import Button from '../../components/Button'
 import ButtonTransparent from '../../components/ButtonTransparent'
-import isDate from '../../utils/isDate'
+import AppState from '../../types/state'
+import { IProfileData } from '../../types/profile'
+import { FieldType } from '../../types/field'
+import dateOfBrith, { dateOfBrithRevert } from '../../utils/dateOfBrith'
 
 import {
   Container,
   Content,
   Title,
-  Form
+  Form,
+  Close
 } from './styles'
 
-interface IFields {
-  firstName: string,
-  lastName: string,
-  login: string,
-  phone: string,
-  city: string,
-  brithDay: string
+interface IProps {
+  profile: IProfileData
+  countries: string[]
+  cities: string[],
+  errors: string[],
+  checked: string[],
+  changeProfileField: (filed: FieldType<string>) => void,
+  updateProfile: () => void
 }
 
-const city: string[] = [
-  'Москва',
-  'Санкт-Петербург'
-]
+const enhance = connect(
+  (state: AppState) => ({
+    profile: state.profile.data,
+    errors: state.profile.errors,
+    checked: state.profile.checked,
+    countries: state.countries.countries,
+    cities: state.countries.cities,
+  }),
+  { changeProfileField, updateProfile }
+)
 
-const ProfileEdit = () => {
-  const [fields, setFields] = useState<IFields>({
-    firstName: 'Хазрат',
-    lastName: 'Гаджикеримов',
-    login: 'hazratgs',
-    phone: '+79282194199',
-    city: 'Москва',
-    brithDay: '30.07.1992'
-  })
+const ProfileEdit = (props: IProps) => {
+  const { profile, errors, checked, cities, updateProfile, changeProfileField } = props
+  const mobile = profile.mobile.indexOf('+') !== -1 ? profile.mobile : `+${profile.mobile}`
 
-  const [errors, setErrors] = useState<string[]>([])
-  const [checked, setCheck] = useState<string[]>([])
-  // const [loginUsed, setLoginUsed] = useState<boolean>(false)
-
-  const handle = (name: string) => (value: string): void => {
-    if (errors.includes(name) && value !== '' && value.length > 2) {
-      setErrors(errors.filter(item => item !== name))
-    }
-
-    setFields({ ...fields, [name]: value })
-
-    if (name === 'login') {
-      const loginCheck = value !== '' && value.length > 2 ? ['login'] : []
-      setCheck(loginCheck)
-      // setLoginUsed(false)
-    }
+  const handle = (key: string) => (value: string): void => {
+    if (key === 'dateOfBirth') value = dateOfBrith(value)
+    changeProfileField({ key, value })
   }
 
-  const submit = (): void => {
-    const errors: string[] = []
-    
-    if (!isDate(fields.brithDay)) errors.push('brithDay')
+  const disabled = () => {
+    if (!checked.includes('dateOfBirth')) return true
+    if (!checked.includes('nickName')) return true
 
-    if (errors.length) {
-      setErrors(errors)
-    } else {
-
-    }
+    return false
   }
 
   return (
     <Container>
       <Content>
+        <Close to='/profile' />
         <Title>Редактировать данные</Title>
         <ProfileUploadAvatar image='/images/profile/user.png' />
         <Form>
@@ -79,53 +69,53 @@ const ProfileEdit = () => {
             checked={checked.includes('firstName')}
             error={errors.includes('firstName')}
             handle={handle('firstName')}
-            value={fields.firstName}
+            value={profile.firstName}
           />
           <InputPhone
             placeholder='Номер'
             country='RU'
-            error={errors.includes('phone')}
-            checked={checked.includes('phone')}
+            error={errors.includes('mobile')}
+            checked={checked.includes('mobile')}
             handle={handle}
-            value={fields.phone}
+            value={mobile}
           />
           <Input
             placeholder={'Фамилия'}
             checked={checked.includes('lastName')}
             error={errors.includes('lastName')}
             handle={handle('lastName')}
-            value={fields.lastName}
+            value={profile.lastName}
           />
           <Select
             placeholder='Город'
             error={errors.includes('city')}
             checked={checked.includes('city')}
-            value={fields.city}
-            options={city}
+            value={profile.city}
+            options={cities}
             handle={handle('city')}
           />
           <Input
             placeholder={'Nickname'}
-            checked={checked.includes('login')}
-            error={errors.includes('login')}
-            handle={handle('login')}
-            value={fields.login}
+            checked={checked.includes('nickName')}
+            error={errors.includes('nickName')}
+            handle={handle('nickName')}
+            value={profile.nickName}
           />
           <Input
             placeholder='День рождения'
-            error={errors.includes('brithDay')}
-            checked={checked.includes('brithDay')}
-            handle={handle('brithDay')}
-            value={fields.brithDay}
+            error={errors.includes('dateOfBirth')}
+            checked={checked.includes('dateOfBirth')}
+            handle={handle('dateOfBirth')}
+            value={dateOfBrithRevert(profile.dateOfBirth)}
             mask={[/[0-3]/, /[0-9]/, '.', /[0-1]/, /[0-9]/, '.', /[1-2]/, /[0-9]/, /[0-9]/, /[0-9]/]}
             icon='/images/register/input-date.svg'
           />
         </Form>
-        <Button onClick={submit}>Продолжить</Button>
+        <Button onClick={updateProfile}>Продолжить</Button>
         <ButtonTransparent to='/profile'>Отмена</ButtonTransparent>
       </Content>
     </Container>
   )
 }
 
-export default ProfileEdit
+export default enhance(ProfileEdit)

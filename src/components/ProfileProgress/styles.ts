@@ -40,8 +40,8 @@ export const Item = styled.div`
     align-items: center;
 
     img {
-      width: 38px;
-      height: 38px;
+      width: 58px;
+      height: 58px;
     }
   }
 
@@ -61,8 +61,8 @@ export const Item = styled.div`
       height: 50px;
 
       img {
-        height: 32px;
-        width: 32px;
+        height: 44px;
+        width: 44px;
       }
     }
 

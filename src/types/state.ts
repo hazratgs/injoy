@@ -16,3 +16,5 @@ export interface AppState {
   auth: IAuthState,
   courses: ICoursesState
 }
+
+export default AppState

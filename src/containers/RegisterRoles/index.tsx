@@ -27,7 +27,7 @@ const enhance = connect(
 
 const RegisterRoles = (props: IProps) => {
   const { labels, roles, changeProfileField, updateProfile } = props
-  console.log(roles)
+
   const handle = (key: string) => (value: string): void => {
     changeProfileField({
       key,

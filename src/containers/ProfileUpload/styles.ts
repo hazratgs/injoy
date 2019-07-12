@@ -12,6 +12,13 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    top: 60px;
+    padding: 15px;
+    height: calc(100vh - 60px);
+    align-items: flex-start;
+  }
 `
 
 export const Content = styled.div`
@@ -26,6 +33,12 @@ export const Content = styled.div`
   justify-content: center;
   flex-direction: column;
   position: relative;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: auto;
+    padding: 30px;
+  }
 `
 
 export const Title = styled.h3`
@@ -79,4 +92,8 @@ export const DropZone = styled.div`
     font-weight: 600;
     margin: 0;
   }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  } 
 `
