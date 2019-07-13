@@ -10,7 +10,6 @@ import { IProfileData } from '../../types/profile'
 import { FieldType } from '../../types/field'
 import { AppState } from '../../types/state'
 import { Wrapper, Container, Group, Form, Title } from './styles'
-import dateOfBrith from '../../utils/dateOfBrith'
 import RegisterHeader from '../../components/RegisterHeader'
 
 interface IProps {
@@ -36,10 +35,7 @@ const enhance = connect(
 
 const RegisterUserInfo = (props: IProps) => {
   const { profile, errors, checked, countries, cities, changeProfileField, push } = props
-  const dateOfBirth = dateOfBrith(profile.dateOfBirth)
-
   const handle = (key: string) => (value: string): void => {
-    if (key === 'dateOfBirth') value = dateOfBrith(value)
     changeProfileField({ key, value })
   }
 
@@ -103,7 +99,7 @@ const RegisterUserInfo = (props: IProps) => {
               error={errors.includes('dateOfBirth')}
               checked={checked.includes('dateOfBirth')}
               handle={handle('dateOfBirth')}
-              value={dateOfBirth}
+              value={profile.dateOfBirth}
               mask={[/[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/]}
               icon='/images/register/input-date.svg'
             />

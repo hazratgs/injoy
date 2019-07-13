@@ -14,6 +14,7 @@ export interface IRegisterState {
 }
 
 export interface IRegisterData {
+  nickName: string,
   mobile: string,
   password: string
 }

@@ -10,7 +10,6 @@ import ButtonTransparent from '../../components/ButtonTransparent'
 import AppState from '../../types/state'
 import { IProfileData } from '../../types/profile'
 import { FieldType } from '../../types/field'
-import dateOfBrith, { dateOfBrithRevert } from '../../utils/dateOfBrith'
 
 import {
   Container,
@@ -46,7 +45,6 @@ const ProfileEdit = (props: IProps) => {
   const mobile = profile.mobile.indexOf('+') !== -1 ? profile.mobile : `+${profile.mobile}`
 
   const handle = (key: string) => (value: string): void => {
-    if (key === 'dateOfBirth') value = dateOfBrith(value)
     changeProfileField({ key, value })
   }
 
@@ -106,7 +104,7 @@ const ProfileEdit = (props: IProps) => {
             error={errors.includes('dateOfBirth')}
             checked={checked.includes('dateOfBirth')}
             handle={handle('dateOfBirth')}
-            value={dateOfBrithRevert(profile.dateOfBirth)}
+            value={profile.dateOfBirth}
             mask={[/[0-3]/, /[0-9]/, '.', /[0-1]/, /[0-9]/, '.', /[1-2]/, /[0-9]/, /[0-9]/, /[0-9]/]}
             icon='/images/register/input-date.svg'
           />

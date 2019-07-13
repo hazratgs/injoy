@@ -8,6 +8,7 @@ import { AppState } from '../types/state'
 import fieldValidation from '../utils/fieldValidation'
 import { FieldType, CheckFieldType } from '../types/field'
 import { conformToMask } from 'react-text-mask'
+import dateOfBrith, { dateOfBrithRevert } from '../utils/dateOfBrith'
 
 const fethProfile = (): Promise<object> => axios.get('/users/profile')
 
@@ -46,13 +47,12 @@ function* changeCheckField(action: Action<CheckFieldType>) {
 
 function* checkBrithDay(action: Action<string>) {
   try {
-    const pattern = [/[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/, '-', /[0-9]/, /[0-9]/]
+    const pattern = [/[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, '.', /[0-9]/, /[0-9]/, /[0-9]/, /[0-9]/]
     const confirm = conformToMask(action.payload, pattern, { guide: false })
 
     if (confirm.conformedValue.length < 10) throw new Error('brithDay lenth')
-    // if (!Date.parse(confirm.conformedValue)) throw new Error('brithDay nope')
 
-    if (Date.parse(confirm.conformedValue)) {
+    if (Date.parse(dateOfBrith(confirm.conformedValue))) {
       yield put(actions.changeCheckField({ field: 'dateOfBirth', type: 'checked' }))
     } else {
       yield put(actions.changeCheckField({ field: 'dateOfBirth', type: 'error' }))
@@ -90,16 +90,18 @@ function* getProfile() {
     const response = yield call(fethProfile)
     const data = response.data
 
+    const brithDay = dateOfBrithRevert(data.dateOfBirth)
+
     const update: IProfileData = {
       id: data.id,
-      firstName: data.firstName,
-      lastName: data.lastName,
+      firstName: data.firstName ? data.firstName : profile.firstName,
+      lastName: data.lastName ? data.lastName : profile.lastName,
       middleName: data.middleName ? data.middleName : profile.middleName,
       nickName: data.nickName ? data.nickName : profile.nickName,
       mobile: data.mobile,
       country: data.country ? data.country : profile.country,
       city: data.city ? data.city : profile.city,
-      dateOfBirth: data.dateOfBirth ? data.dateOfBirth : profile.dateOfBirth,
+      dateOfBirth: brithDay,
       roles: data.roles
     }
 
@@ -116,6 +118,7 @@ function* updateProfile() {
   try {
     const state: AppState = yield select()
     const profile: IProfileData = state.profile.data
+    profile.dateOfBirth = dateOfBrith(profile.dateOfBirth)
 
     yield call(fethUpdateProfile, profile)
 

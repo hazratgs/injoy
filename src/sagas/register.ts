@@ -136,6 +136,7 @@ function* register() {
     const state: AppState = yield select()
     const errors: string[] = []
     const {
+      nickName,
       mobile,
       password
     } = state.register
@@ -148,6 +149,7 @@ function* register() {
       yield put(actions.errorsFields(errors))
     } else {
       const data: IRegisterData = {
+        nickName,
         password,
         mobile
       }
