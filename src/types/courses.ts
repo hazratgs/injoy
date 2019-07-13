@@ -1,5 +1,8 @@
 export interface ICoursesState {
-  items: ICourse[]
+  items: ICourse[],
+  types: string[],
+  authors: IAuthors[],
+  subjects: string[]
 }
 
 export interface ICourse {
@@ -11,4 +14,10 @@ export interface ICourse {
   name: string
   rating: number
   tags: string[]
+}
+
+export interface IAuthors {
+  id: string,
+  name: string,
+  imageUrl: string
 }

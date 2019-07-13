@@ -7,7 +7,7 @@ import NavigationItem from '../../components/NavitgationItem'
 import NavigationUser from '../../components/NavigationUser'
 import HeaderSearch from '../../components/HeaderSearch'
 import { Container, Wrapper } from './styles'
-import { IRouteProps, IUserProps } from '../../types/navigations'
+import { IRouteProps } from '../../types/navigations'
 import { IProfileData } from '../../types/profile'
 
 interface IProps {

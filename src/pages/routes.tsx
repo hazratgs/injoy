@@ -6,7 +6,7 @@ import Header from '../containers/Header'
 import HeaderMobile from '../containers/HeaderMobile'
 import { Wrapper, Content } from './styles'
 import { AppState } from '../types/state'
-import { getCourses } from '../actions/courses'
+import { getCourses, getTypes, getAuthors, getSubjects } from '../actions/courses'
 import NewUserPopup from '../containers/NewsUserPopup'
 
 import Main from './main'
@@ -15,18 +15,24 @@ import Profile from './profile'
 import Courses from './courses'
 
 interface IProps {
-  getCourses: () => void
+  getCourses: () => void,
+  getTypes: () => void,
+  getAuthors: () => void,
+  getSubjects: () => void
 }
 
 const enhance = connect(
   (state: AppState) => ({}),
-  { getCourses }
+  { getCourses, getTypes, getAuthors, getSubjects }
 )
 
 
 const Routes = (props: IProps) => {
   useEffect(() => {
     props.getCourses()
+    props.getTypes()
+    props.getAuthors()
+    props.getSubjects()
   }, [])
 
   return (

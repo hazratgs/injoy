@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import SmallNews from '../../components/SmallNews'
 import BigNews from '../../components/BigNews'
