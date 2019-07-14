@@ -2,6 +2,7 @@ import React from 'react'
 import HeaderContent from '../../components/HeaderContent'
 import CourseInfo from '../../components/CourseInfo'
 import CourseData from '../../components/CourseData'
+import Poster from '../../components/Poster'
 import { ICourseData } from '../../types/courses'
 import {
   Container,
@@ -24,6 +25,11 @@ const CourseOpen = () => {
         <Content>
           <CourseInfo />
           <CourseData {...courseData} />
+          <Poster
+            src='https://habrastorage.org/web/478/1e7/bb2/4781e7bb27a14fb1bf65ec0759266192.jpg'
+            title='Вступление и знакомство с автором'
+            duration='51:45'
+          />
         </Content>
       </Wrapper>
     </Container>
