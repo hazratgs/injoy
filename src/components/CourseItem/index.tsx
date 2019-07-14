@@ -1,5 +1,6 @@
 import React from 'react'
 import { ICourse } from '../../types/courses'
+import Author from '../Author'
 import {
   Container,
   Image,
@@ -9,7 +10,6 @@ import {
   TagsWrapper,
   Tag,
   Info,
-  Author,
   Duration,
   Rating
 } from './styles'
@@ -20,16 +20,13 @@ const CourseItem = (props: ICourse) => {
     <Container>
       <Image src='/images/courses/images.svg' alt='' />
       <Wrapper>
-        <Title to='/'>{props.name}</Title>
+        <Title to={`/courses/open/${props.id}`}>{props.name}</Title>
         <Description>{props.description}</Description>
         <TagsWrapper>
           {tags}
         </TagsWrapper>
         <Info>
-          <Author>
-            <img src='/images/courses/user.svg' alt='' />
-            <span>{props.authorName}</span>
-          </Author>
+          <Author authorName={props.authorName} />
           <Duration>
             <img src='/images/courses/time.svg' alt='' />
             <span>{props.duration}</span>

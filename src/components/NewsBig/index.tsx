@@ -9,7 +9,7 @@ import {
   Description
 } from './styles'
 
-const SmallNews = (props: INewsItem) => (
+const BigNews = (props: INewsItem) => (
   <Container to={props.url}>
     <Content>
       <Category>{props.category}</Category>
@@ -20,4 +20,4 @@ const SmallNews = (props: INewsItem) => (
   </Container>
 )
 
-export default SmallNews
+export default BigNews

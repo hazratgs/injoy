@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import SmallNews from '../../components/SmallNews'
-import BigNews from '../../components/BigNews'
+import NewsSmall from '../../components/NewsSmall'
+import NewsBig from '../../components/NewsBig'
 import { AppState } from '../../types/state'
 import { INewsItem } from '../../types/news'
 import { Container } from './styles'
@@ -19,8 +19,8 @@ const News = (props: IProps) => {
   const items = props.items.map((item, i) => {
     const big = ((i + 1) % bigNewsItem) === 0
 
-    if (big) return <BigNews key={i} {...item} />
-    return <SmallNews key={i} {...item} />
+    if (big) return <NewsBig key={i} {...item} />
+    return <NewsSmall key={i} {...item} />
   })
 
   return (

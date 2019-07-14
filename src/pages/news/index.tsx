@@ -1,12 +1,9 @@
 import React from 'react'
-import OtherNews from '../../containers/OtherNews'
+import NewsOther from '../../containers/NewsOther'
+import HeaderContent from '../../components/HeaderContent'
 import {
   Container,
   Wrappper,
-  Head,
-  HeadWrapper,
-  Title,
-  BackButton,
   NewsParams,
   DateTime,
   Author,
@@ -20,14 +17,7 @@ const News = () => {
   return (
     <Container>
       <Wrappper>
-        <Head>
-          <BackButton to='/'>
-            <img src='/images/back.svg' alt='back news' />
-          </BackButton>
-          <HeadWrapper>
-            <Title>За что программисты любят программирование?</Title>
-          </HeadWrapper>
-        </Head>
+        <HeaderContent to='/' text='За что программисты любят программирование?' />
         <Reverse>
           <NewsParams>
             <DateTime>3 апреля 2018 в 10:42,</DateTime>
@@ -43,7 +33,7 @@ const News = () => {
           <p>17,5% участников опроса заявили, что очень любят писать. Статьи, публикации в блогах на IT-тематику зачастую пишутся самими разработчиками и работниками в этой сфере.</p>
         </HtmlContent>
       </Wrappper>
-      <OtherNews />
+      <NewsOther />
     </Container>
   )
 }

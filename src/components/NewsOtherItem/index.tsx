@@ -9,7 +9,7 @@ import {
   Title
 } from './styles'
 
-const OtherNewsItem = (props: INewsItem) => (
+const NewsOtherItem = (props: INewsItem) => (
   <Container>
     <Link to={props.url}>
       <Image src={props.image} alt={props.title} />
@@ -21,4 +21,4 @@ const OtherNewsItem = (props: INewsItem) => (
   </Container>
 )
 
-export default OtherNewsItem
+export default NewsOtherItem

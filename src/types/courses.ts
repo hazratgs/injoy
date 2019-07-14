@@ -21,3 +21,10 @@ export interface IAuthors {
   name: string,
   imageUrl: string
 }
+
+export interface ICourseData {
+  lessons: number
+  videoLength: number
+  tests: number
+  tasks: number
+}

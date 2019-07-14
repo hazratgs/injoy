@@ -1,32 +1,24 @@
 import React from 'react'
+import { Switch, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
-import NewsFilter from '../../components/NewsFilter'
-import CourseList from '../../containers/CourseList'
-import { Container, Wrapper, Aside } from './styles'
-import { INewsType } from '../../types/news'
 import { AppState } from '../../types/state'
 
+import Courses from '../../containers/Courses'
+import CourseOpen from '../../containers/CourseOpen'
+
 const enhance = connect(
-  (state: AppState) => ({
-    types: state.news.types,
-    selectedTypes: state.news.selectedTypes
-  })
+  (state: AppState) => ({})
 )
 
 interface IProps {
-  types: INewsType[],
-  selectedTypes: number[]
+
 }
 
-const Main = (props: IProps) => (
-  <Container>
-    <Wrapper>
-      <CourseList />
-    </Wrapper>
-    <Aside>
-      <NewsFilter items={props.types} selectedTypes={props.selectedTypes} />
-    </Aside>
-  </Container>
+const CoursesPage = (props: IProps) => (
+  <Switch>
+    <Route path='/courses' exact component={Courses} />
+    <Route path='/courses/open/:id' exact component={CourseOpen} />
+  </Switch>
 )
 
-export default enhance(Main)
+export default enhance(CoursesPage)

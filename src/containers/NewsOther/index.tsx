@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import OtherNewsItem from '../../components/OtherNewsItem'
+import NewsOtherItem from '../../components/NewsOtherItem'
 import { AppState } from '../../types/state'
 import { INewsItem } from '../../types/news'
 import { Container, Title } from './styles'
@@ -13,8 +13,8 @@ const enhance = connect(
   (state: AppState) => ({ items: state.news.items })
 )
 
-const OtherNews = (props: IProps) => {
-  const items = props.items.map(item => <OtherNewsItem {...item} />)
+const NewsOther = (props: IProps) => {
+  const items = props.items.map(item => <NewsOtherItem {...item} />)
   return (
     <Container>
       <Title>Другие новости</Title>
@@ -23,4 +23,4 @@ const OtherNews = (props: IProps) => {
   )
 }
 
-export default enhance(OtherNews)
+export default enhance(NewsOther)

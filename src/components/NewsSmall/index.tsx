@@ -8,7 +8,7 @@ import {
   Title
 } from './styles'
 
-const SmallNews = (props: INewsItem) => (
+const NewsSmall = (props: INewsItem) => (
   <Container to={props.url}>
     <Image src={props.image} />
     <Content>
@@ -18,4 +18,4 @@ const SmallNews = (props: INewsItem) => (
   </Container>
 )
 
-export default SmallNews
+export default NewsSmall
