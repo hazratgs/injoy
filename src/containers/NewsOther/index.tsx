@@ -14,7 +14,7 @@ const enhance = connect(
 )
 
 const NewsOther = (props: IProps) => {
-  const items = props.items.map(item => <NewsOtherItem {...item} />)
+  const items = props.items.map((item: INewsItem, i: number) => <NewsOtherItem key={i} {...item} />)
   return (
     <Container>
       <Title>Другие новости</Title>

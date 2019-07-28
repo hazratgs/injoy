@@ -8,6 +8,12 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   margin: 10px 0;
+
+  @media (max-width: 768px) {
+    border: none;
+    padding: 0 30px;
+    flex-wrap: wrap;
+  }
 `
 
 export const Item = styled.div`
@@ -16,9 +22,15 @@ export const Item = styled.div`
 
   img {
     margin-right: 10px;
+    width: 20px;
   }
 
   span {
     font-size: 14px;
+  }
+
+  @media (max-width: 768px) {
+    width: 50%;
+    margin-bottom: 15px;
   }
 `

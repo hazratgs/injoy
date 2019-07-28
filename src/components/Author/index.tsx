@@ -1,13 +1,15 @@
 import React from 'react'
 import { Container } from './styles'
 
-interface IProps {
+export interface IProps {
   authorName: string
   imageUrl?: string
+  mobileWhite?: boolean
+  big?: boolean
 }
 
 const Author = (props: IProps) => (
-  <Container>
+  <Container {...props}>
     <img src='/images/courses/user.svg' alt='' />
     <span>{props.authorName}</span>
   </Container>

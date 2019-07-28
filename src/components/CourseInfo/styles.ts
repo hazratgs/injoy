@@ -7,10 +7,22 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media (max-width: 768px) {
+    border: 0;
+    flex-wrap: wrap;
+    padding: 0 30px;
+  }
 `
 
 export const Item = styled.div`
+  @media (max-width: 768px) {
+    margin-bottom: 20px;
 
+    &:nth-child(2) {
+      order: -1;
+    }
+  }
 `
 
 export const Title = styled.span`

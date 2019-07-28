@@ -1,5 +1,6 @@
 export interface INavigationState {
-  visibility: boolean
+  visibility: boolean,
+  routes: IRouteProps[]
 }
 
 export interface IRouteProps {
@@ -17,3 +18,5 @@ export interface IUserProps {
   phone: string,
   handle?: () => void
 }
+
+export type TabType = { name: string, to: string }

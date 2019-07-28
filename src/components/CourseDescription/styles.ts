@@ -1,9 +1,12 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  padding: 0 30px;
+  p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
 
   @media (max-width: 768px) {
-    padding: 0 28px;
+    padding: 0 30px;
   }
 `

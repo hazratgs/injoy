@@ -11,52 +11,23 @@ import { IRouteProps } from '../../types/navigations'
 import { IProfileData } from '../../types/profile'
 
 interface IProps {
-  profile: IProfileData,
-  visibility: boolean,
+  profile: IProfileData
+  visibility: boolean
+  routes: IRouteProps[]
   changeVisibilityNavBar: () => void
 }
 
 const enhance = connect(
   (state: AppState) => ({
     profile: state.profile.data,
-    visibility: state.navigations.visibility
+    visibility: state.navigations.visibility,
+    routes: state.navigations.routes
   }),
   { changeVisibilityNavBar }
 )
 
-const routes: IRouteProps[] = [
-  {
-    icon: '/images/folder.svg',
-    title: 'Каталог курсов',
-    counter: 32,
-    path: '/courses'
-  },
-  {
-    icon: '/images/books.svg',
-    title: 'Мои курсы и проекты',
-    counter: 5,
-    path: '/my-courses'
-  },
-  {
-    icon: '/images/news.svg',
-    title: 'Новости',
-    path: '/'
-  },
-  {
-    icon: '/images/notif.svg',
-    title: 'Уведомления',
-    counter: 8,
-    path: '/notif'
-  },
-  {
-    icon: '/images/support.svg',
-    title: 'FAQ',
-    path: '/support'
-  }
-]
-
 const NavigationBar = (props: IProps) => {
-  const { visibility } = props
+  const { visibility, routes } = props
   const items = routes.map(item => (
     <NavigationItem
       key={item.path}

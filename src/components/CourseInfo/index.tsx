@@ -16,7 +16,7 @@ const CourseInfo = (props: IProps) => (
     </Item>
     <Item>
       <Title>Автор курса</Title>
-      <Author authorName='Татьяна Долгоненко' />
+      <Author authorName='Татьяна Долгоненко' big={true} />
     </Item>
     <Item>
       <Title>Прошли обучение</Title>

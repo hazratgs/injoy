@@ -8,6 +8,7 @@ interface IProps {
 const RatingStar = (props: IProps) => {
   const stars = [1, 2, 3, 4, 5].map((item: number) =>
     <Item
+      key={item}
       src='/images/courses/star.svg'
       active={item <= +props.rating}
     />

@@ -16,17 +16,18 @@ import {
 
 const CourseItem = (props: ICourse) => {
   const tags = props.tags.map((item: string) => <Tag key={item}>{item}</Tag>)
+  const name = props.name.substring(0, 50)
   return (
     <Container>
       <Image src='/images/courses/images.svg' alt='' />
       <Wrapper>
-        <Title to={`/courses/open/${props.id}`}>{props.name}</Title>
+        <Title to={`/courses/open/${props.id}`}>{name}{props.name.length > 50 ? '...' : ''}</Title>
         <Description>{props.description}</Description>
         <TagsWrapper>
           {tags}
         </TagsWrapper>
         <Info>
-          <Author authorName={props.authorName} />
+          <Author authorName={props.authorName} mobileWhite={true}/>
           <Duration>
             <img src='/images/courses/time.svg' alt='' />
             <span>{props.duration}</span>
